@@ -1,0 +1,14 @@
+/**
+ * Converts a date to the corresponding day of the week.
+ *
+ * @param {date} dateValue The date to convert.
+ * @return {string} The name of the day of the week.
+ * @customfunction
+ */
+function DAY_OF_WEEK(dateValue) {
+ if (!(dateValue instanceof Date)) return "Invalid date";
+
+ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+ const dayIndex = dateValue.getDay();
+ return days[dayIndex];
+}
