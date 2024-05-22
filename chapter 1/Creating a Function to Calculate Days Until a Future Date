@@ -1,0 +1,14 @@
+/**
+ * Calculates the number of days from today to a specified future date.
+ *
+ * @param {date} futureDate The future date to compare against today.
+ * @return {number} The number of days from today to the specified future date.
+ * @customfunction
+ */
+function DAYS_TO_FUTURE_DATE(futureDate) {
+ const today = new Date();
+ const date = new Date(futureDate);
+ const diffTime = date - today;
+ const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+ return diffDays >= 0 ? diffDays : "Date is in the past!";
+}
