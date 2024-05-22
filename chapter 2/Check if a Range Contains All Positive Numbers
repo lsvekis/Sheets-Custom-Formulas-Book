@@ -1,0 +1,11 @@
+/**
+ * Checks if all values in the range are positive numbers.
+ *
+ * @param {range} data The range of numbers to check.
+ * @return {string} "All Positive" or "Contains Non-Positive" depending on the input data.
+ * @customfunction
+ */
+function CHECK_ALL_POSITIVE(data) {
+ const allPositive = data.flat().every(num => typeof num === 'number' && num > 0);
+ return allPositive ? "All Positive" : "Contains Non-Positive";
+}
