@@ -1,0 +1,23 @@
+/**
+ * Calculates the weighted average of a range of values with corresponding weights.
+ *
+ * @param {range} values The range of values.
+ * @param {range} weights The range of weights.
+ * @return {number|string} The calculated weighted average or an error message if input data is invalid.
+ * @customfunction
+ */
+function WEIGHTED_AVERAGE(values, weights) {
+ if (values.length !== weights.length || values.length === 0) return "Invalid data!";
+ 
+ let weightedSum = 0;
+ let totalWeight = 0;
+
+for (let i = 0; i < values.length; i++) {
+ if (typeof values[i][0] === 'number' && typeof weights[i][0] === 'number') {
+ weightedSum += values[i][0] * weights[i][0];
+ totalWeight += weights[i][0];
+ }
+ }
+
+ return totalWeight > 0 ? (weightedSum / totalWeight).toFixed(2) : "Invalid weights!";
+}
