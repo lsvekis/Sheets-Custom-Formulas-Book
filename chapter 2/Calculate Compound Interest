@@ -1,0 +1,15 @@
+/**
+ * Calculates the compound interest based on principal, rate, and time period.
+ *
+ * @param {number} principal The initial amount of money.
+ * @param {number} rate The annual interest rate as a percentage.
+ * @param {number} timesCompounded The number of times interest is compounded per year.
+ * @param {number} years The number of years the money is invested or borrowed for.
+ * @return {number} The total amount accumulated after n years, including interest.
+ * @customfunction
+ */
+function COMPOUND_INTEREST(principal, rate, timesCompounded, years) {
+ const effectiveRate = rate / 100;
+ const accumulatedAmount = principal * Math.pow(1 + effectiveRate / timesCompounded, timesCompounded * years);
+ return accumulatedAmount.toFixed(2);
+}
