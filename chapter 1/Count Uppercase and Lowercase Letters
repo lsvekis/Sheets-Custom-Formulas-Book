@@ -1,0 +1,16 @@
+/**
+ * Counts the number of uppercase and lowercase letters in a given string.
+ *
+ * @param {string} inputText The text to count uppercase and lowercase letters.
+ * @return {array} An array with the count of uppercase and lowercase letters.
+ * @customfunction
+ */
+function COUNT_CASES(inputText) {
+ if (typeof inputText !== 'string') return "Invalid input";
+ 
+ // Initialize counters for uppercase and lowercase
+ const upperCount = (inputText.match(/[A-Z]/g) || []).length;
+ const lowerCount = (inputText.match(/[a-z]/g) || []).length;
+ 
+ return [["Uppercase", upperCount], ["Lowercase", lowerCount]];
+}
