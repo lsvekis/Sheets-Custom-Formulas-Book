@@ -1,0 +1,10 @@
+/**
+ * Sums only even numbers from the given range.
+ *
+ * @param {range} data The range of numbers to sum up.
+ * @return {number} The sum of even numbers in the specified range.
+ * @customfunction
+ */
+function SUM_EVEN_NUMBERS(data) {
+ return data.flat().filter(num => typeof num === 'number' && num % 2 === 0).reduce((sum, num) => sum + num, 0);
+}
