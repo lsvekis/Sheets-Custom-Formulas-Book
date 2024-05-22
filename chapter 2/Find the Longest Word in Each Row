@@ -1,0 +1,17 @@
+/**
+ * Finds the longest word in each row of text data.
+ *
+ * @param {range} data The range of text data.
+ * @return {array|string} An array of longest words or an error message if input data is invalid.
+ * @customfunction
+ */
+function LONGEST_WORD_IN_ROWS(data) {
+ return data.map(row => {
+ if (typeof row[0] !== 'string') return ["Invalid input"];
+ 
+ const words = row[0].match(/\b\w+\b/g) || [];
+ const longestWord = words.reduce((longest, current) => current.length > longest.length ? current : longest, "");
+ 
+ return [longestWord || "No words found"];
+ });
+}
