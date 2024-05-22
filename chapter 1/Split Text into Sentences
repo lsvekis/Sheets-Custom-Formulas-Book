@@ -1,0 +1,16 @@
+/**
+ * Splits the input text into sentences.
+ *
+ * @param {string} inputText The text to split into sentences.
+ * @return {array} An array of sentences extracted from the input text.
+ * @customfunction
+ */
+function SPLIT_SENTENCES(inputText) {
+ if (typeof inputText !== 'string') return "Invalid input";
+ 
+ // Regular expression to identify sentences
+ const sentences = inputText.match(/[^.!?]+[.!?]/g) || [];
+ 
+ // Return sentences as an array of single-item arrays for Google Sheets
+ return sentences.map(sentence => [sentence.trim()]);
+}
