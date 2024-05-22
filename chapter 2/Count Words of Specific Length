@@ -1,0 +1,23 @@
+/**
+/**
+ * Counts words of a specific length in a given range of text.
+ *
+ * @param {range} data The range containing text to search.
+ * @param {number} wordLength The desired word length to count.
+ * @return {number|string} The count of words or an error message if input data is invalid.
+ * @customfunction
+ */
+function COUNT_WORDS_BY_LENGTH(data, wordLength) {
+    // Check if the wordLength is a number and greater than 0
+    if (typeof wordLength !== 'number' || wordLength <= 0) return "Invalid word length!";
+
+    let wordCount = 0;  // Initialize word count
+    data.flat().forEach(text => {  // Flatten the range and iterate through each text element
+        if (typeof text === 'string') {  // Ensure the element is a string
+            const matches = text.match(new RegExp(`\\b\\w{${wordLength}}\\b`, 'g'));  // Regex to find words of exactly wordLength
+            wordCount += matches ? matches.length : 0;  // Increment wordCount by the number of matches found
+        }
+    });
+
+    return wordCount;  // Return the total count of words found
+}
