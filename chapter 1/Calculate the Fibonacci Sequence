@@ -1,0 +1,14 @@
+/**
+ * Generates a Fibonacci sequence of the given length.
+ *
+ * @param {number} numTerms The number of terms to generate.
+ * @return {array} An array of Fibonacci numbers.
+ * @customfunction
+ */
+function GENERATE_FIBONACCI(numTerms) {
+ const fib = [0, 1];
+ for (let i = 2; i < numTerms; i++) {
+ fib.push(fib[i - 1] + fib[i - 2]);
+ }
+ return fib.slice(0, numTerms).map(num => [num]);
+}
