@@ -1,0 +1,24 @@
+/**
+ * Checks for duplicate values in a specified range.
+ *
+ * @param {range} data The range of values to check for duplicates.
+ * @return {array} An array of duplicate values found.
+ * @customfunction
+ */
+function FIND_DUPLICATES(data) {
+ const flatData = data.flat();
+ const occurrences = {};
+ const duplicates = [];
+ 
+ flatData.forEach(item => {
+ occurrences[item] = (occurrences[item] || 0) + 1;
+ });
+ 
+ Object.entries(occurrences).forEach(([key, count]) => {
+ if (count > 1) {
+ duplicates.push([key]);
+ }
+ });
+ 
+ return duplicates.length > 0 ? duplicates : "No duplicates found!";
+}
