@@ -1,0 +1,27 @@
+/**
+ * Finds the mode (most frequently occurring value) in a range of numbers.
+ *
+ * @param {range} data The range of numbers to analyze.
+ * @return {number|string} The mode value or an error message if no valid data is found.
+ * @customfunction
+ */
+function FIND_MODE(data) {
+ const numberCounts = {};
+ const flatData = data.flat().filter(val => typeof val === 'number');
+
+ if (flatData.length === 0) return "No valid numeric data!";
+ 
+ flatData.forEach(num => numberCounts[num] = (numberCounts[num] || 0) + 1);
+
+let mode = flatData[0];
+let maxCount = numberCounts[mode];
+
+ for (let key in numberCounts) {
+ if (numberCounts[key] > maxCount) {
+ mode = Number(key);
+ maxCount = numberCounts[key];
+ }
+ }
+
+ return mode;
+}
