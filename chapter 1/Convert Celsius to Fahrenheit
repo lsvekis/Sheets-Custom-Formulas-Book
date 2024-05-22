@@ -1,0 +1,13 @@
+/**
+ * Converts temperatures from Celsius to Fahrenheit.
+ *
+ * @param {range} data The range of temperatures in Celsius to convert.
+ * @return {array} An array of temperatures converted to Fahrenheit.
+ * @customfunction
+ */
+function CELSIUS_TO_FAHRENHEIT(data) {
+ return data.flat().map(celsius => {
+ if (typeof celsius !== 'number') return "Invalid input";
+ return [celsius * 9/5 + 32];
+ });
+}
