@@ -1,0 +1,21 @@
+/**
+ * Identifies prime numbers in a specified range.
+ *
+ * @param {range} data The range of numbers to check.
+ * @return {array} An array with the prime numbers found.
+ * @customfunction
+ */
+function FIND_PRIMES(data) {
+ function isPrime(num) {
+ if (num <= 1) return false;
+ for (let i = 2; i <= Math.sqrt(num); i++) {
+ if (num % i === 0) return false;
+ }
+ return true;
+ }
+
+ const flatData = data.flat();
+ const primes = flatData.filter(num => typeof num === 'number' && isPrime(num));
+ 
+ return primes.length > 0 ? primes.map(prime => [prime]) : "No primes found!";
+}
