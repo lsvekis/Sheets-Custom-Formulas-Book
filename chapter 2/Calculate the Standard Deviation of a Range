@@ -1,0 +1,17 @@
+/**
+ * Calculates the standard deviation of a given range of numbers.
+ *
+ * @param {range} data The range of numbers to calculate.
+ * @return {number|string} The standard deviation or an error message if input data is invalid.
+ * @customfunction
+ */
+function STANDARD_DEVIATION(data) {
+ const numbers = data.flat().filter(val => typeof val === 'number');
+ if (numbers.length === 0) return "No valid numeric data!";
+ 
+ const mean = numbers.reduce((sum, val) => sum + val, 0) / numbers.length;
+ const variance = numbers.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / numbers.length;
+ const stdDev = Math.sqrt(variance);
+ 
+ return stdDev.toFixed(2);
+}
