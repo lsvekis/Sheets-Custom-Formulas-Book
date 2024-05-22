@@ -1,0 +1,32 @@
+/**
+ * Analyzes yearly expense trends for multiple categories.
+ *
+ * @param {range} years The range containing years.
+ * @param {range} categories The range containing expense data for each category across multiple years.
+ * @return {array|string} An array summarizing the trend for each category, or an error message if data is invalid.
+ * @customfunction
+ */
+function ANALYZE_YEARLY_EXPENSE_TRENDS(years, categories) {
+ const results = [];
+ const numYears = years.length;
+ const numCategories = categories[0].length; // Assuming uniform data
+ for (let j = 0; j < numCategories; j++) {
+ let trend = 'Stable';
+ let increasing = 0;
+ let decreasing = 0;
+ for (let i = 1; i < numYears; i++) {
+ if (categories[i][j] > categories[i - 1][j]) {
+ increasing++;
+ } else if (categories[i][j] < categories[i - 1][j]) {
+ decreasing++;
+ }
+ }
+ if (increasing === numYears - 1) {
+ trend = 'Increasing';
+ } else if (decreasing === numYears - 1) {
+ trend = 'Decreasing';
+ }
+ results.push(['Category ' + (j + 1), trend]);
+ }
+ return results.length > 0 ? results : "No enough data to determine trends.";
+}
