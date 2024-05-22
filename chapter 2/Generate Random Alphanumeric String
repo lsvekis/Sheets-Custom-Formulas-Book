@@ -1,0 +1,17 @@
+/**
+ * Generates a random alphanumeric string of a specified length.
+ *
+ * @param {number} length The desired length of the random string.
+ * @return {string} The generated random alphanumeric string.
+ * @customfunction
+ */
+function RANDOM_ALPHANUMERIC(length) {
+ if (typeof length !== 'number' || length <= 0) return "Invalid length";
+ 
+ const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+let result = '';
+for (let i = 0; i < length; i++) {
+ result += characters.charAt(Math.floor(Math.random() * characters.length));
+ }
+ return result;
+}
