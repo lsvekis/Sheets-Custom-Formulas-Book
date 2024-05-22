@@ -1,0 +1,16 @@
+/**
+ * Finds the longest string in a specified range.
+ *
+ * @param {range} data The range to search through.
+ * @return {string} The longest string found in the range.
+ * @customfunction
+ */
+function LONGEST_STRING(data) {
+ let longest = '';
+ data.flat().forEach(item => {
+ if (typeof item === 'string' && item.length > longest.length) {
+ longest = item;
+ }
+ });
+ return longest || "No strings found!";
+}
