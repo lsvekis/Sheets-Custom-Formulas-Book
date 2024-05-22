@@ -1,0 +1,21 @@
+/**
+ * Calculates the median of a given range of numbers.
+ *
+ * @param {range} data The range of numbers to calculate the median for.
+ * @return {number|string} The median value or an error message if no valid numbers are found.
+ * @customfunction
+ */
+function MEDIAN_OF_RANGE(data) {
+ // Filter out non-numeric data and flatten the input array
+ const numbers = data.flat().filter(val => typeof val === 'number');
+
+ // Check if there are any valid numbers in the range
+ if (numbers.length === 0) return "No numeric data!";
+ 
+ // Sort numbers in ascending order
+ numbers.sort((a, b) => a - b);
+ 
+ // Find the median value
+ const middle = Math.floor(numbers.length / 2);
+ return numbers.length % 2 === 0 ? (numbers[middle - 1] + numbers[middle]) / 2 : numbers[middle];
+}
