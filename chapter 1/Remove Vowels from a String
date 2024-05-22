@@ -1,0 +1,11 @@
+/**
+ * Removes all vowels from the provided string.
+ *
+ * @param {string} inputText The input string to process.
+ * @return {string} The string with vowels removed.
+ * @customfunction
+ */
+function REMOVE_VOWELS(inputText) {
+ if (typeof inputText !== 'string') return "Invalid input";
+ return inputText.replace(/[aeiouAEIOU]/g, '');
+}
