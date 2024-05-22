@@ -1,0 +1,22 @@
+/**
+ * Determines the days of the week each staff member is available.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} days The range containing availability data for Monday through Friday.
+ * @return {array|string} An array listing each employee with their available days, or an error message if data is invalid.
+ * @customfunction
+ */
+function DETERMINE_STAFF_AVAILABILITY(employees, days) {
+ const results = [];
+ const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+for (let i = 0; i < employees.length; i++) {
+ const availableDays = [];
+ for (let j = 0; j < days[i].length; j++) {
+ if (days[i][j] === 'Available') {
+ availableDays.push(weekdays[j]);
+ }
+ }
+ results.push([employees[i][0], availableDays.join(", ")]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
