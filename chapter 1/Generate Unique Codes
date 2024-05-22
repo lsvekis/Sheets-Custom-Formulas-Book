@@ -1,0 +1,20 @@
+/**
+ * Generates unique alphanumeric codes for a specified number of rows.
+ *
+ * @param {number} numCodes The number of unique codes to generate.
+ * @param {number} length The length of each code.
+ * @return {array} An array of unique alphanumeric codes.
+ * @customfunction
+ */
+function GENERATE_UNIQUE_CODES(numCodes, length) {
+ const result = [];
+ const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+for (let i = 0; i < numCodes; i++) {
+let code = '';
+ for (let j = 0; j < length; j++) {
+ code += characters.charAt(Math.floor(Math.random() * characters.length));
+ }
+ result.push([code]);
+ }
+ return result;
+}
