@@ -1,0 +1,23 @@
+/**
+ * Calculates the average of a range and categorizes it based on user thresholds.
+ *
+ * @param {range} data The range of numbers to calculate the average for.
+ * @param {number} lowThreshold The upper limit of the "Low" category.
+ * @param {number} highThreshold The lower limit of the "High" category.
+ * @return {string} The average value and its category.
+ * @customfunction
+ */
+function AVERAGE_WITH_CATEGORY(data, lowThreshold, highThreshold) {
+ const validNumbers = data.flat().filter(val => typeof val === 'number');
+ if (validNumbers.length === 0) return "No numeric data!";
+  const avg = validNumbers.reduce((sum, val) => sum + val, 0) / validNumbers.length;
+  let category;
+ if (avg < lowThreshold) {
+ category = "Low";
+ } else if (avg >= highThreshold) {
+ category = "High";
+ } else {
+ category = "Medium";
+ }
+  return `Average: ${avg.toFixed(2)}, Category: ${category}`;
+}
