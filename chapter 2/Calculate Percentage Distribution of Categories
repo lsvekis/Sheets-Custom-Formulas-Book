@@ -1,0 +1,21 @@
+/**
+ * Calculates the percentage distribution of categories in a given range.
+ *
+ * @param {range} data The range containing the list of categories.
+ * @return {array|string} An array of categories with their percentage distributions or an error message if input data is invalid.
+ * @customfunction
+ */
+function CATEGORY_PERCENTAGES(data) {
+ const total = data.flat().filter(cat => typeof cat === 'string').length;
+ if (total === 0) return "No categories found!";
+ 
+ const counts = {};
+ data.flat().forEach(category => {
+ if (typeof category === 'string') {
+ counts[category] = (counts[category] || 0) + 1;
+ }
+ });
+ 
+ const result = Object.entries(counts).map(([category, count]) => [category, ((count / total) * 100).toFixed(2) + '%']);
+ return result;
+}
