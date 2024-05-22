@@ -1,0 +1,17 @@
+/**
+ * Converts a range of words into a grammatically correct sentence.
+ *
+ * @param {range} words The range of words to combine into a sentence.
+ * @return {string} The formatted sentence.
+ * @customfunction
+ */
+function LIST_TO_SENTENCE(words) {
+ const flatWords = words.flat().filter(word => typeof word === 'string' && word.trim() !== '');
+ const count = flatWords.length;
+ 
+ if (count === 0) return "No words provided!";
+ if (count === 1) return flatWords[0] + '.';
+ if (count === 2) return flatWords.join(' and ') + '.';
+
+ return flatWords.slice(0, count - 1).join(', ') + ', and ' + flatWords[count - 1] + '.';
+}
