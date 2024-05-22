@@ -1,0 +1,11 @@
+/**
+ * Returns the sum of numbers in a given range that are greater than a specified threshold.
+ *
+ * @param {range} data The range to sum over.
+ * @param {number} threshold The minimum value to include in the sum.
+ * @return {number} The sum of the numbers greater than the threshold.
+ * @customfunction
+ */
+function SUM_OVER_THRESHOLD(data, threshold) {
+ return data.flat().filter(val => typeof val === 'number' && val > threshold).reduce((sum, val) => sum + val, 0);
+}
