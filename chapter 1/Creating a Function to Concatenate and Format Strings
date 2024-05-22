@@ -1,0 +1,16 @@
+/**
+ * Concatenates values from two columns with a separator.
+ *
+ * @param {range} col1 The first column of strings.
+ * @param {range} col2 The second column of strings.
+ * @param {string} separator The separator string.
+ * @return {array} The concatenated and formatted strings.
+ * @customfunction
+ */
+function CONCATENATE_WITH_SEPARATOR(col1, col2, separator) {
+ const result = [];
+for (let i = 0; i < Math.min(col1.length, col2.length); i++) {
+ result.push([col1[i][0] + separator + col2[i][0]]);
+ }
+ return result;
+}
