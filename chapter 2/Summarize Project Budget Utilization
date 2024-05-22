@@ -1,0 +1,20 @@
+/**
+ * Summarizes budget utilization for each project.
+ *
+ * @param {range} projects The range containing project names.
+ * @param {range} budgets The range containing allocated budgets.
+ * @param {range} spent The range containing amounts spent.
+ * @return {array|string} An array listing each project with its budget utilization as a percentage, or an error message if data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_BUDGET_UTILIZATION(projects, budgets, spent) {
+ const results = [];
+for (let i = 0; i < projects.length; i++) {
+ const project = projects[i][0];
+ const budget = budgets[i][0];
+ const expenditure = spent[i][0];
+ const utilization = (expenditure / budget) * 100;
+ results.push([project, utilization.toFixed(2) + "%"]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
