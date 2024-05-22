@@ -1,0 +1,19 @@
+/**
+ * Extracts distinct words from a string and counts their occurrences.
+ *
+ * @param {string} text The text from which to extract words.
+ * @return {array} An array of words and their counts.
+ * @customfunction
+ */
+function COUNT_WORDS(text) {
+ const words = text.toLowerCase().match(/\b\w+\b/g);
+ if (!words) return "No words found!";
+ 
+ const wordCounts = {};
+ words.forEach(word => {
+ wordCounts[word] = (wordCounts[word] || 0) + 1;
+ });
+ 
+ const result = Object.entries(wordCounts).map(([word, count]) => [word, count]);
+ return result;
+}
