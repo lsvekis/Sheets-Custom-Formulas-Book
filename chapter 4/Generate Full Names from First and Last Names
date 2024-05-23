@@ -1,0 +1,22 @@
+//Generate Full Names from First and Last Names
+/**
+ * Combines first and last names to generate full names.
+ *
+ * @param {range} firstNames The range containing first names.
+ * @param {range} lastNames The range containing last names.
+ * @return {array|string} An array with the generated full names or an error message if input data is invalid.
+ * @customfunction
+ */
+function GENERATE_FULL_NAMES(firstNames, lastNames) {
+ const result = [];
+for (let i = 0; i < firstNames.length; i++) {
+ const firstName = firstNames[i][0];
+ const lastName = lastNames[i][0];
+ if (typeof firstName === 'string' && typeof lastName === 'string') {
+ result.push([firstName.trim() + " " + lastName.trim()]);
+ } else {
+ result.push(["Invalid input"]);
+ }
+ }
+ return result.length > 0 ? result : "No valid data!";
+}
