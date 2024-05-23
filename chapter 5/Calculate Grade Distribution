@@ -1,0 +1,23 @@
+//Calculate Grade Distribution
+/**
+ * Calculates the distribution of students across grade ranges.
+ *
+ * @param {range} students The range containing student names.
+ * @param {range} scores The range containing scores.
+ * @return {array|string} An array with grade ranges and counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function GRADE_DISTRIBUTION(students, scores) {
+ const distribution = { "A (85-100)": 0, "B (70-84)": 0, "C (55-69)": 0, "F (0-54)": 0 };
+for (let i = 0; i < scores.length; i++) {
+ const score = scores[i][0];
+ if (typeof score === 'number') {
+ if (score >= 85 && score <= 100) distribution["A (85-100)"]++;
+ else if (score >= 70 && score <= 84) distribution["B (70-84)"]++;
+ else if (score >= 55 && score <= 69) distribution["C (55-69)"]++;
+ else distribution["F (0-54)"]++;
+ }
+ }
+ const result = Object.entries(distribution).map(([range, count]) => [range, count]);
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
