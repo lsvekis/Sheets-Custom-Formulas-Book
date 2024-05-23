@@ -1,0 +1,23 @@
+//Calculate Monthly Sales Growth
+/**
+ * Calculates the month-over-month sales growth.
+ *
+ * @param {range} months The range containing the month names.
+ * @param {range} sales The range containing sales data.
+ * @return {array|string} An array with months and their growth percentages, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MONTHLY_SALES_GROWTH(months, sales) {
+ const growth = [["Month", "Growth %"]];
+ for (let i = 1; i < months.length; i++) {
+ const month = months[i][0];
+ const prevSales = sales[i - 1][0];
+ const currSales = sales[i][0];
+ if (typeof prevSales !== 'number' || typeof currSales !== 'number') {
+ return "Invalid or empty data!";
+ }
+ const growthPercentage = ((currSales - prevSales) / prevSales) * 100;
+ growth.push([month, growthPercentage.toFixed(2) + "%"]);
+ }
+ return growth.length > 1 ? growth : "Not enough data!";
+}
