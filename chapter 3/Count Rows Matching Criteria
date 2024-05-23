@@ -1,0 +1,13 @@
+/**
+ * Counts rows matching a specific value in a column.
+ *
+ * @param {range} data The range to analyze.
+ * @param {string} status The value to match in the specified column.
+ * @return {number|string} The count of matching rows or an error message if no valid data is found.
+ * @customfunction
+ */
+function COUNT_ROWS_BY_STATUS(data, status) {
+ if (typeof status !== 'string') return "Invalid status";
+ const count = data.flat().filter(item => item === status).length;
+ return count > 0 ? count : "No matching rows found";
+}
