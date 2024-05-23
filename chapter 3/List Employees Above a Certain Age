@@ -1,0 +1,21 @@
+/**
+ * Lists employees above a specified age.
+ *
+ * @param {range} names The range containing employee names.
+ * @param {range} ages The range containing corresponding ages.
+ * @param {number} minAge The minimum age to include in the result.
+ * @return {array|string} An array of names who are above the specified age, or an error message if no valid data is found.
+ * @customfunction
+ */
+function EMPLOYEES_ABOVE_AGE(names, ages, minAge) {
+ if (typeof minAge !== 'number' || minAge <= 0) return "Invalid age parameter!";
+ const result = [];
+for (let i = 0; i < names.length; i++) {
+ const name = names[i][0];
+ const age = ages[i][0];
+ if (typeof name === 'string' && typeof age === 'number' && age > minAge) {
+ result.push([name]);
+ }
+ }
+ return result.length > 0 ? result : "No employees found above the specified age!";
+}
