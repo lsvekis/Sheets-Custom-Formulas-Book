@@ -1,0 +1,17 @@
+/**
+ * Finds palindromic words in a given range of text data.
+ *
+ * @param {range} data The range of words to analyze.
+ * @return {array|string} An array of palindromic words or an error message if input data is invalid.
+ * @customfunction
+ */
+function FIND_PALINDROMES(data) {
+ function isPalindrome(word) {
+ const sanitized = word.toLowerCase().replace(/[^a-z]/g, '');
+ return sanitized === sanitized.split('').reverse().join('');
+ }
+
+ const palindromicWords = data.flat().filter(word => typeof word === 'string' && isPalindrome(word));
+
+ return palindromicWords.length > 0 ? palindromicWords.map(palindrome => [palindrome]) : "No palindromic words found!";
+}
