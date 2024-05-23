@@ -1,0 +1,18 @@
+//List Top-N Customers by Purchase Count
+/**
+ * Identifies the top-N customers based on purchase count.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} counts The range containing purchase counts for each customer.
+ * @param {number} n The number of top customers to return.
+ * @return {array|string} An array with the top-N customers and their purchase counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOP_N_CUSTOMERS_BY_PURCHASE_COUNT(customers, counts, n) {
+ if (typeof n !== 'number' || n <= 0) return "Invalid value for N";
+ const data = customers.map((customer, index) => ({ customer: customer[0], count: counts[index][0] }))
+ .filter(item => typeof item.customer === 'string' && typeof item.count === 'number')
+ .sort((a, b) => b.count - a.count);
+ const result = data.slice(0, n).map(item => [item.customer, item.count]);
+ return result.length > 0 ? result : "No valid data!";
+}
