@@ -1,0 +1,25 @@
+//Find the Most Common Item per Category
+/**
+ * Finds the most common item within each category.
+ *
+ * @param {range} categories The range containing category names.
+ * @param {range} items The range containing items corresponding to each category.
+ * @return {array|string} An array with categories and their most common items, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MOST_COMMON_ITEM_BY_CATEGORY(categories, items) {
+ const itemCounts = {};
+for (let i = 0; i < categories.length; i++) {
+ const category = categories[i][0];
+ const item = items[i][0];
+ if (typeof category === 'string' && typeof item === 'string') {
+ if (!itemCounts[category]) itemCounts[category] = {};
+ itemCounts[category][item] = (itemCounts[category][item] || 0) + 1;
+ }
+ }
+ const result = Object.entries(itemCounts).map(([category, countMap]) => {
+ const mostCommonItem = Object.entries(countMap).reduce((a, b) => (b[1] > a[1] ? b : a));
+ return [category, mostCommonItem[0]];
+ });
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
