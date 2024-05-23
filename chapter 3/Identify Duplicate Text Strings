@@ -1,0 +1,22 @@
+/**
+ * Identifies duplicate text strings in the specified range.
+ *
+ * @param {range} data The range containing text strings.
+ * @return {array|string} An array with duplicate text strings and their counts, or an error message if no duplicates are found.
+ * @customfunction
+ */
+function FIND_DUPLICATE_TEXTS(data) {
+ const counts = {};
+ const duplicates = [];
+ data.flat().forEach(text => {
+ if (typeof text === 'string' && text.trim()) {
+ counts[text] = (counts[text] || 0) + 1;
+ }
+ });
+ for (let text in counts) {
+ if (counts[text] > 1) {
+ duplicates.push([text, counts[text]]);
+ }
+ }
+ return duplicates.length > 0 ? duplicates : "No duplicates found!";
+}
