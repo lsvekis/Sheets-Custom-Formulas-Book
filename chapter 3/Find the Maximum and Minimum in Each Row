@@ -1,0 +1,15 @@
+/**
+ * Finds the maximum and minimum values for each row in a table of numerical data.
+ *
+ * @param {range} data The table of numerical data.
+ * @return {array|string} An array of maximum and minimum values for each row, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MAX_AND_MIN_IN_ROWS(data) {
+ return data.map(row => {
+ const numbers = row.filter(val => typeof val === 'number');
+ if (numbers.length === 0) return ["No valid numeric data!"];
+
+ return [Math.max(...numbers), Math.min(...numbers)];
+ });
+}
