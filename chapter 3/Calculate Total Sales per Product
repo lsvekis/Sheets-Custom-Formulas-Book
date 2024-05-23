@@ -1,0 +1,22 @@
+/**
+ * Calculates total sales per product.
+ *
+ * @param {range} products The range of product names.
+ * @param {range} quantities The range of quantities sold.
+ * @param {range} prices The range of unit prices.
+ * @return {array|string} An array with product names and their total sales, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_SALES_PER_PRODUCT(products, quantities, prices) {
+ const sales = {};
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const quantity = quantities[i][0];
+ const price = prices[i][0];
+ if (typeof product === 'string' && typeof quantity === 'number' && typeof price === 'number') {
+ sales[product] = (sales[product] || 0) + quantity * price;
+ }
+ }
+ const result = Object.entries(sales).map(([product, total]) => [product, total.toFixed(2)]);
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
