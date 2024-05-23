@@ -1,0 +1,21 @@
+//Evaluate Sales Team Performance
+/**
+ * Evaluates sales team performance against their quarterly targets.
+ *
+ * @param {range} salespeople The range containing salesperson names.
+ * @param {range} quarterlySales The range containing quarterly sales figures.
+ * @param {range} salesTargets The range containing sales targets.
+ * @return {array|string} An array listing each salesperson with their performance category, or an error message if data is invalid.
+ * @customfunction
+ */
+function EVALUATE_SALES_PERFORMANCE(salespeople, quarterlySales, salesTargets) {
+ const results = [];
+for (let i = 0; i < salespeople.length; i++) {
+ const salesperson = salespeople[i][0];
+ const sales = quarterlySales[i][0];
+ const target = salesTargets[i][0];
+ const performance = sales > target ? 'Exceeded' : sales === target ? 'Met' : 'Below';
+ results.push([salesperson, performance]);
+ }
+ return results.length > 0 ? results : "No sales data to evaluate.";
+}
