@@ -1,0 +1,12 @@
+/**
+ * Returns unique values from a specified column.
+ *
+ * @param {range} data The range to analyze.
+ * @return {array|string} An array of unique values or an error message if no valid data is found.
+ * @customfunction
+ */
+function UNIQUE_VALUES(data) {
+ const uniqueSet = new Set(data.flat().filter(val => typeof val === 'string' && val.trim() !== ""));
+ const result = Array.from(uniqueSet).map(val => [val]);
+ return result.length > 0 ? result : "No valid data!";
+}
