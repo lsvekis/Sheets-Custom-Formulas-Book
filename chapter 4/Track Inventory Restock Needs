@@ -1,0 +1,22 @@
+//Track Inventory Restock Needs
+/**
+ * Identifies inventory items that need restocking.
+ *
+ * @param {range} items The range containing item names.
+ * @param {range} currentStock The range containing current stock levels.
+ * @param {range} minimumRequired The range containing minimum required stock levels.
+ * @return {array|string} An array listing items that need restocking, or an error message if all items are sufficiently stocked.
+ * @customfunction
+ */
+function TRACK_INVENTORY_RESTOCK(items, currentStock, minimumRequired) {
+ const results = [];
+for (let i = 0; i < items.length; i++) {
+ const item = items[i][0];
+ const stock = currentStock[i][0];
+ const minimum = minimumRequired[i][0];
+ if (stock < minimum) {
+ results.push([item]);
+ }
+ }
+ return results.length > 0 ? results : "All items are sufficiently stocked.";
+}
