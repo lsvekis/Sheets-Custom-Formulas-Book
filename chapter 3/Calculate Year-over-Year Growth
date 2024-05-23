@@ -1,0 +1,22 @@
+/**
+ * Calculates year-over-year growth of sales data.
+ *
+ * @param {range} years The range containing the years.
+ * @param {range} sales The range containing sales data.
+ * @return {array|string} An array with years and their corresponding growth rates, or an error message if input data is invalid.
+ * @customfunction
+ */
+function YEAR_OVER_YEAR_GROWTH(years, sales) {
+ const result = [["Year", "Growth %"]];
+ for (let i = 1; i < years.length; i++) {
+ const year = years[i][0];
+ const prevSales = sales[i - 1][0];
+ const currSales = sales[i][0];
+ if (typeof year !== 'number' || typeof prevSales !== 'number' || typeof currSales !== 'number') {
+ return "Invalid data!";
+ }
+ const growthRate = ((currSales - prevSales) / prevSales) * 100;
+ result.push([year, growthRate.toFixed(2) + "%"]);
+ }
+ return result.length > 1 ? result : "Not enough data to calculate growth!";
+}
