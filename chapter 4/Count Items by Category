@@ -1,0 +1,18 @@
+//Count Items by Category
+/**
+ * Counts the total number of items per category.
+ *
+ * @param {range} categories The range containing the category names.
+ * @return {array|string} An array with the categories and their respective counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function COUNT_ITEMS_BY_CATEGORY(categories) {
+ const counts = {};
+ categories.flat().forEach(category => {
+ if (typeof category === 'string' && category.trim() !== '') {
+ counts[category] = (counts[category] || 0) + 1;
+ }
+ });
+ const result = Object.entries(counts).map(([category, count]) => [category, count]);
+ return result.length > 0 ? result : "No valid categories found!";
+}
