@@ -1,0 +1,27 @@
+//Calculate Median Score by Class
+/**
+ * Calculates the median score per class.
+ *
+ * @param {range} classes The range containing class names.
+ * @param {range} scores The range containing scores for each class.
+ * @return {array|string} An array with classes and their median scores, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MEDIAN_SCORE_BY_CLASS(classes, scores) {
+ const classScores = {};
+for (let i = 0; i < classes.length; i++) {
+ const className = classes[i][0];
+ const score = scores[i][0];
+ if (typeof className === 'string' && typeof score === 'number') {
+ if (!classScores[className]) classScores[className] = [];
+ classScores[className].push(score);
+ }
+ }
+ function calculateMedian(arr) {
+ arr.sort((a, b) => a - b);
+ const middle = Math.floor(arr.length / 2);
+ return arr.length % 2 === 0 ? (arr[middle - 1] + arr[middle]) / 2 : arr[middle];
+ }
+ const result = Object.entries(classScores).map(([className, scores]) => [className, calculateMedian(scores)]);
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
