@@ -1,0 +1,23 @@
+//Identify Outliers in Sales Data
+/**
+ * Identifies outlier sales amounts based on standard deviation.
+ *
+ * @param {range} days The range containing the day identifiers.
+ * @param {range} sales The range containing the sales amounts.
+ * @return {array|string} An array listing the outlier sales amounts, or an error message if no outliers are found.
+ * @customfunction
+ */
+function IDENTIFY_OUTLIERS_IN_SALES(days, sales) {
+ const salesData = sales.flat().filter(val => typeof val === 'number');
+ if (salesData.length === 0) return "Invalid or empty data!";
+ const mean = salesData.reduce((sum, val) => sum + val, 0) / salesData.length;
+ const stdDev = Math.sqrt(salesData.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / salesData.length);
+ const threshold = 2 * stdDev;
+ const outliers = [];
+for (let i = 0; i < salesData.length; i++) {
+ if (Math.abs(salesData[i] - mean) > threshold) {
+ outliers.push([days[i][0], salesData[i]]);
+ }
+ }
+ return outliers.length > 0 ? outliers : "No outliers found!";
+}
