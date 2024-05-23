@@ -1,0 +1,22 @@
+/**
+ * Calculates the average rating per category.
+ *
+ * @param {range} categories The range containing categories.
+ * @param {range} ratings The range containing the ratings.
+ * @return {array|string} An array of categories with their average ratings, or an error message if no valid data is found.
+ * @customfunction
+ */
+function AVERAGE_RATING_BY_CATEGORY(categories, ratings) {
+ const totals = {};
+ const counts = {};
+for (let i = 0; i < categories.length; i++) {
+ const category = categories[i][0];
+ const rating = ratings[i][0];
+ if (typeof category === 'string' && typeof rating === 'number') {
+ totals[category] = (totals[category] || 0) + rating;
+ counts[category] = (counts[category] || 0) + 1;
+ }
+ }
+ const result = Object.entries(totals).map(([category, total]) => [category, (total / counts[category]).toFixed(2)]);
+ return result.length > 0 ? result : "No valid data!";
+}
