@@ -1,0 +1,16 @@
+/**
+ * Finds rows that contain empty cells in the provided range.
+ *
+ * @param {range} data The table to analyze.
+ * @return {array|string} An array with the row numbers of rows containing missing data, or an error message if no missing data is found.
+ * @customfunction
+ */
+function FIND_MISSING_ROWS(data) {
+ const missingRows = [];
+for (let i = 0; i < data.length; i++) {
+ if (data[i].some(cell => cell === "" || cell === null || cell === undefined)) {
+ missingRows.push([i + 2]);
+ }
+ }
+ return missingRows.length > 0 ? missingRows : "No missing data!";
+}
