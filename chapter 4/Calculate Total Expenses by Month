@@ -1,0 +1,22 @@
+//Calculate Total Expenses by Month
+/**
+ * Calculates the total expenses for each month.
+ *
+ * @param {range} dates The range containing the dates.
+ * @param {range} expenses The range containing the corresponding expenses.
+ * @return {array|string} An array of months with their total expenses, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_EXPENSES_BY_MONTH(dates, expenses) {
+ const monthlyExpenses = {};
+for (let i = 0; i < dates.length; i++) {
+ const date = new Date(dates[i][0]);
+ const expense = expenses[i][0];
+ if (!isNaN(date) && typeof expense === 'number') {
+ const monthYear = date.toISOString().slice(0, 7);
+ monthlyExpenses[monthYear] = (monthlyExpenses[monthYear] || 0) + expense;
+ }
+ }
+ const result = Object.entries(monthlyExpenses).map(([month, total]) => [month, total]);
+ return result.length > 0 ? result : "No valid data found!";
+}
