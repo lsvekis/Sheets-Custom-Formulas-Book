@@ -1,0 +1,23 @@
+//Sum Revenue by Product Type
+/**
+ * Calculates the total revenue by product type.
+ *
+ * @param {range} types The range containing product types.
+ * @param {range} unitsSold The range containing units sold for each product type.
+ * @param {range} prices The range containing the unit price for each product type.
+ * @return {array|string} An array with product types and their total revenue, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_REVENUE_BY_PRODUCT_TYPE(types, unitsSold, prices) {
+ const revenue = {};
+for (let i = 0; i < types.length; i++) {
+ const type = types[i][0];
+ const units = unitsSold[i][0];
+ const price = prices[i][0];
+ if (typeof type === 'string' && typeof units === 'number' && typeof price === 'number') {
+ revenue[type] = (revenue[type] || 0) + units * price;
+ }
+ }
+ const result = Object.entries(revenue).map(([type, total]) => [type, total.toFixed(2)]);
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
