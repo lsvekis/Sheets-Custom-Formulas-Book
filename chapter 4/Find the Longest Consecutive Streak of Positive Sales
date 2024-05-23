@@ -1,0 +1,23 @@
+//Find the Longest Consecutive Streak of Positive Sales
+/**
+ * Finds the longest consecutive streak of positive sales.
+ *
+ * @param {range} sales The range of daily sales data.
+ * @return {number|string} The length of the longest positive sales streak or an error message if input data is invalid.
+ * @customfunction
+ */
+function LONGEST_POSITIVE_STREAK(sales) {
+ let maxStreak = 0;
+ let currentStreak = 0;
+for (let i = 0; i < sales.length; i++) {
+ const sale = sales[i][0];
+ if (typeof sale === 'number' && sale > 0) {
+ currentStreak++;
+ } else {
+ maxStreak = Math.max(maxStreak, currentStreak);
+ currentStreak = 0;
+ }
+ }
+ maxStreak = Math.max(maxStreak, currentStreak);
+ return maxStreak > 0 ? maxStreak : "No positive streak found!";
+}
