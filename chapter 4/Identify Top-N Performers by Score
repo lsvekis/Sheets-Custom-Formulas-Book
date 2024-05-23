@@ -1,0 +1,18 @@
+//Identify Top-N Performers by Score
+/**
+ * Identifies the top-N performers based on scores.
+ *
+ * @param {range} names The range containing the names.
+ * @param {range} scores The range containing the scores.
+ * @param {number} n The number of top performers to return.
+ * @return {array|string} An array of top-N performers and their scores, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOP_N_PERFORMERS(names, scores, n) {
+ if (typeof n !== 'number' || n <= 0) return "Invalid value for N";
+ const data = names.map((name, index) => ({ name: name[0], score: scores[index][0] }))
+ .filter(item => typeof item.name === 'string' && typeof item.score === 'number')
+ .sort((a, b) => b.score - a.score);
+ const result = data.slice(0, n).map(item => [item.name, item.score]);
+ return result.length > 0 ? result : "Not enough data!";
+}
