@@ -1,0 +1,24 @@
+//Determine the Day with Maximum Sales
+/**
+ * Determines the day with the highest sales amount.
+ *
+ * @param {range} days The range containing day names.
+ * @param {range} sales The range containing corresponding sales amounts.
+ * @return {array|string} An array with the day and the maximum sales amount, or an error message if input data is invalid.
+ * @customfunction
+ */
+function DAY_WITH_MAX_SALES(days, sales) {
+ let maxSales = -Infinity;
+ let dayWithMaxSales = "";
+for (let i = 0; i < days.length; i++) {
+ const day = days[i][0];
+ const sale = sales[i][0];
+ if (typeof day === 'string' && typeof sale === 'number') {
+ if (sale > maxSales) {
+ maxSales = sale;
+ dayWithMaxSales = day;
+ }
+ }
+ }
+ return dayWithMaxSales ? [dayWithMaxSales, maxSales] : "No valid data!";
+}
