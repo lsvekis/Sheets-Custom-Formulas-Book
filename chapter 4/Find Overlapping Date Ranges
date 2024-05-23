@@ -1,0 +1,21 @@
+//Find Overlapping Date Ranges
+/**
+ * Finds overlapping date ranges given start and end dates.
+ *
+ * @param {range} startDates The range containing start dates.
+ * @param {range} endDates The range containing end dates.
+ * @return {array|string} An array with overlapping date ranges or an error message if input data is invalid.
+ * @customfunction
+ */
+function FIND_OVERLAPPING_DATES(startDates, endDates) {
+ const ranges = startDates.map((start, index) => ({ start: new Date(start[0]), end: new Date(endDates[index][0]) }));
+ const overlaps = [];
+for (let i = 0; i < ranges.length; i++) {
+ for (let j = i + 1; j < ranges.length; j++) {
+ if (ranges[i].start <= ranges[j].end && ranges[i].end >= ranges[j].start) {
+ overlaps.push([`Range ${i + 1} overlaps with Range ${j + 1}`]);
+ }
+ }
+ }
+ return overlaps.length > 0 ? overlaps : "No overlapping dates found!";
+}
