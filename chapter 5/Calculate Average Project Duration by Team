@@ -1,0 +1,25 @@
+//Calculate Average Project Duration by Team
+/**
+ * Calculates the average project duration for each team.
+ *
+ * @param {range} teams The range containing team names.
+ * @param {range} durations The range containing project durations in days.
+ * @return {array|string} An array with team names and their average project duration, or an error message if no data is available.
+ * @customfunction
+ */
+function AVERAGE_PROJECT_DURATION_BY_TEAM(teams, durations) {
+ const teamDurations = {};
+for (let i = 0; i < teams.length; i++) {
+ const team = teams[i][0];
+ const duration = durations[i][0];
+ if (typeof team === 'string' && typeof duration === 'number') {
+ if (!teamDurations[team]) teamDurations[team] = { total: 0, count: 0 };
+ teamDurations[team].total += duration;
+ teamDurations[team].count++;
+ }
+ }
+ const result = Object.entries(teamDurations).map(([team, data]) => [
+ team, (data.total / data.count).toFixed(2)
+ ]);
+ return result.length > 0 ? result : "No valid data!";
+}
