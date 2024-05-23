@@ -1,0 +1,21 @@
+//Calculate Employee Utilization Rate
+/**
+ * Calculates the utilization rate for employees.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} billableHours The range containing billable hours worked.
+ * @param {range} totalHours The range containing total hours worked.
+ * @return {array|string} An array listing each employee with their utilization rate as a percentage, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_UTILIZATION_RATE(employees, billableHours, totalHours) {
+ const results = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const billable = billableHours[i][0];
+ const total = totalHours[i][0];
+ const utilization = (billable / total) * 100;
+ results.push([employee, utilization.toFixed(2) + "%"]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
