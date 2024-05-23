@@ -1,0 +1,19 @@
+/**
+ * Calculates the cumulative sum of values grouped by date.
+ *
+ * @param {range} dates The range containing the dates.
+ * @param {range} values The range containing the values associated with each date.
+ * @return {array|string} An array with dates and their cumulative sums, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CUMULATIVE_SUM_BY_DATE(dates, values) {
+ const data = dates.map((date, index) => ({ date: new Date(date[0]), value: values[index][0] })).filter(item => !isNaN(item.date) && typeof item.value === 'number');
+ if (data.length === 0) return "Invalid data or empty range!";
+ data.sort((a, b) => a.date - b.date);
+ let cumulativeSum = 0;
+let result = data.map(item => {
+ cumulativeSum += item.value;
+ return [item.date.toISOString().split('T')[0], cumulativeSum];
+ });
+ return result;
+}
