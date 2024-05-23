@@ -1,0 +1,26 @@
+//Calculate Monthly Average Temperature
+/**
+ * Calculates the monthly average temperature based on daily temperature data.
+ *
+ * @param {range} dates The range containing the dates.
+ * @param {range} temperatures The range containing temperature readings.
+ * @return {array|string} An array with the month and its average temperature, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MONTHLY_AVERAGE_TEMPERATURE(dates, temperatures) {
+ const monthlyTemps = {};
+for (let i = 0; i < dates.length; i++) {
+ const date = new Date(dates[i][0]);
+ const temp = temperatures[i][0];
+ if (!isNaN(date) && typeof temp === 'number') {
+ const monthYear = date.toISOString().slice(0, 7);
+ if (!monthlyTemps[monthYear]) monthlyTemps[monthYear] = { sum: 0, count: 0 };
+ monthlyTemps[monthYear].sum += temp;
+ monthlyTemps[monthYear].count++;
+ }
+ }
+ const result = Object.entries(monthlyTemps).map(([monthYear, data]) => [
+ monthYear, (data.sum / data.count).toFixed(2)
+ ]);
+ return result.length > 0 ? result : "No valid data found!";
+}
