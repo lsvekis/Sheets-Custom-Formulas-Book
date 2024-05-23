@@ -1,0 +1,22 @@
+//List Unique Customers by Region
+/**
+ * Lists unique customer names grouped by region.
+ *
+ * @param {range} regions The range containing region names.
+ * @param {range} customers The range containing customer names.
+ * @return {array|string} An array with regions and their unique customers, or an error message if input data is invalid.
+ * @customfunction
+ */
+function UNIQUE_CUSTOMERS_BY_REGION(regions, customers) {
+ const regionMap = {};
+for (let i = 0; i < regions.length; i++) {
+ const region = regions[i][0];
+ const customer = customers[i][0];
+ if (typeof region === 'string' && typeof customer === 'string') {
+ if (!regionMap[region]) regionMap[region] = new Set();
+ regionMap[region].add(customer);
+ }
+ }
+ const result = Object.entries(regionMap).map(([region, customerSet]) => [region, Array.from(customerSet).join(', ')]);
+ return result.length > 0 ? result : "No valid data!";
+}
