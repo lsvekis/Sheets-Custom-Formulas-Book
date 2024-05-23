@@ -1,0 +1,20 @@
+//Identify Employees by Department
+/**
+ * Lists employees by department.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} departments The range containing department names.
+ * @param {string} department The department name to filter by.
+ * @return {array|string} An array with employee names in the specified department, or an error message if input data is invalid.
+ * @customfunction
+ */
+function EMPLOYEES_BY_DEPARTMENT(employees, departments, department) {
+ if (typeof department !== 'string') return "Invalid department name";
+ const result = [];
+for (let i = 0; i < employees.length; i++) {
+ if (departments[i][0] === department) {
+ result.push([employees[i][0]]);
+ }
+ }
+ return result.length > 0 ? result : "No employees found in the specified department!";
+}
