@@ -1,0 +1,22 @@
+//Find Items Above a Specific Quantity
+/**
+ * Returns all items whose quantities are above a specified threshold.
+ *
+ * @param {range} items The range containing item names.
+ * @param {range} quantities The range containing quantities for each item.
+ * @param {number} threshold The minimum quantity to include an item.
+ * @return {array|string} An array with items and their quantities, or an error message if no items are above the threshold.
+ * @customfunction
+ */
+function ITEMS_ABOVE_THRESHOLD(items, quantities, threshold) {
+ if (typeof threshold !== 'number' || threshold < 0) return "Invalid threshold";
+ const result = [];
+for (let i = 0; i < items.length; i++) {
+ const item = items[i][0];
+ const quantity = quantities[i][0];
+ if (typeof item === 'string' && typeof quantity === 'number' && quantity > threshold) {
+ result.push([item, quantity]);
+ }
+ }
+ return result.length > 0 ? result : "No items above the specified threshold!";
+}
