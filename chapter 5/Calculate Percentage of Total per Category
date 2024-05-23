@@ -1,0 +1,18 @@
+//Calculate Percentage of Total per Category
+/**
+ * Calculates the percentage contribution of each category to the overall total.
+ *
+ * @param {range} categories The range containing the category names.
+ * @param {range} amounts The range containing the amounts corresponding to each category.
+ * @return {array|string} An array with categories and their percentages, or an error message if input data is invalid.
+ * @customfunction
+ */
+function PERCENTAGE_OF_TOTAL_BY_CATEGORY(categories, amounts) {
+ const totalAmount = amounts.flat().reduce((sum, amount) => typeof amount === 'number' ? sum + amount : sum, 0);
+ if (totalAmount === 0) return "Invalid or empty data!";
+ const percentages = categories.map((category, index) => {
+ const amount = amounts[index][0];
+ return [category[0], ((amount / totalAmount) * 100).toFixed(2) + '%'];
+ });
+ return percentages.length > 0 ? percentages : "No valid data!";
+}
