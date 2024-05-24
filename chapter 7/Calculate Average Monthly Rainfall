@@ -1,0 +1,26 @@
+// // Calculate Average Monthly Rainfall
+/**
+ * Calculates the average monthly rainfall from daily data.
+ *
+ * @param {range} dates The range containing date values.
+ * @param {range} rainfall The range containing daily rainfall data.
+ * @return {array|string} An array listing months and their average rainfall, or an error message if input data is invalid.
+ * @customfunction
+ */
+function AVERAGE_MONTHLY_RAINFALL(dates, rainfall) {
+ const monthlyData = {};
+for (let i = 0; i < dates.length; i++) {
+ const date = new Date(dates[i][0]);
+ const rain = rainfall[i][0];
+ if (!isNaN(date) && typeof rain === 'number') {
+ const monthYear = date.toISOString().slice(0, 7);
+ if (!monthlyData[monthYear]) monthlyData[monthYear] = { sum: 0, count: 0 };
+ monthlyData[monthYear].sum += rain;
+ monthlyData[monthYear].count++;
+ }
+ }
+ const result = Object.entries(monthlyData).map(([monthYear, data]) => [
+ monthYear, (data.sum / data.count).toFixed(2) + ' mm'
+ ]);
+ return result.length > 0 ? result : "No valid data!";
+}
