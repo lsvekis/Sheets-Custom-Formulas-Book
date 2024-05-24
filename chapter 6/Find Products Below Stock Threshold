@@ -1,0 +1,22 @@
+//Find Products Below Stock Threshold
+/**
+ * Identifies products whose stock is below a specified threshold.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} stocks The range containing stock levels.
+ * @param {number} threshold The stock level below which to include a product.
+ * @return {array|string} An array with products and their stock levels, or an error message if no data is found.
+ * @customfunction
+ */
+function PRODUCTS_BELOW_STOCK_THRESHOLD(products, stocks, threshold) {
+ if (typeof threshold !== 'number' || threshold < 0) return "Invalid threshold value";
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const stock = stocks[i][0];
+ if (typeof product === 'string' && typeof stock === 'number' && stock < threshold) {
+ result.push([product, stock]);
+ }
+ }
+ return result.length > 0 ? result : "No products below the specified stock threshold!";
+}
