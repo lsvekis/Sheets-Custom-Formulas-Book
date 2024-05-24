@@ -1,0 +1,23 @@
+//Calculate Profit Margin per Product
+/**
+ * Calculates the profit margin for each product.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} costs The range containing the cost prices.
+ * @param {range} sellingPrices The range containing the selling prices.
+ * @return {array|string} An array with products and their profit margins, or an error message if input data is invalid.
+ * @customfunction
+ */
+function PROFIT_MARGIN_PER_PRODUCT(products, costs, sellingPrices) {
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const cost = costs[i][0];
+ const sellingPrice = sellingPrices[i][0];
+ if (typeof product === 'string' && typeof cost === 'number' && typeof sellingPrice === 'number') {
+ const margin = ((sellingPrice - cost) / sellingPrice) * 100;
+ result.push([product, margin.toFixed(2) + '%']);
+ }
+ }
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
