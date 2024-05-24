@@ -1,0 +1,22 @@
+// List Projects by Department
+/**
+ * Lists the projects assigned to each department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} projects The range containing project names.
+ * @return {array|string} An array with departments and their projects, or an error message if input data is invalid.
+ * @customfunction
+ */
+function PROJECTS_BY_DEPARTMENT(departments, projects) {
+ const departmentProjects = {};
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const project = projects[i][0];
+ if (typeof department === 'string' && typeof project === 'string') {
+ if (!departmentProjects[department]) departmentProjects[department] = [];
+ departmentProjects[department].push(project);
+ }
+ }
+ const result = Object.entries(departmentProjects).map(([department, projectList]) => [department, projectList.join(', ')]);
+ return result.length > 0 ? result : "No valid data!";
+}
