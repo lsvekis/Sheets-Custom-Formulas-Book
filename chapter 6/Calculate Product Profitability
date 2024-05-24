@@ -1,0 +1,21 @@
+//Calculate Product Profitability
+/**
+ * Calculates the profitability of products.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} salesRevenue The range containing sales revenue figures.
+ * @param {range} costs The range containing cost of goods sold.
+ * @return {array|string} An array listing each product with its profitability, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_PRODUCT_PROFITABILITY(products, salesRevenue, costs) {
+ const results = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const revenue = salesRevenue[i][0];
+ const cost = costs[i][0];
+ const profitability = revenue - cost;
+ results.push([product, profitability]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
