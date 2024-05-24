@@ -1,0 +1,23 @@
+//Calculate Employee Salaries After Bonus
+/**
+ * Calculates the final salaries of employees after adding bonuses.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} salaries The range containing base salaries.
+ * @param {range} bonuses The range containing bonus percentages.
+ * @return {array|string} An array with employees and their final salaries, or an error message if input data is invalid.
+ * @customfunction
+ */
+function FINAL_SALARIES_AFTER_BONUS(employees, salaries, bonuses) {
+ const result = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const salary = salaries[i][0];
+ const bonus = bonuses[i][0];
+ if (typeof employee === 'string' && typeof salary === 'number' && typeof bonus === 'number') {
+ const finalSalary = salary + (salary * (bonus / 100));
+ result.push([employee, finalSalary.toFixed(2)]);
+ }
+ }
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
