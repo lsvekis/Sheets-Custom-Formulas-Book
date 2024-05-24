@@ -1,0 +1,25 @@
+//Find Items Within Price Range
+/**
+ * Finds items within a specified price range.
+ *
+ * @param {range} items The range containing item names.
+ * @param {range} prices The range containing prices of items.
+ * @param {number} minPrice The minimum price to include an item.
+ * @param {number} maxPrice The maximum price to include an item.
+ * @return {array|string} An array listing items and their prices within the specified range, or an error message if no items are found.
+ * @customfunction
+ */
+function ITEMS_WITHIN_PRICE_RANGE(items, prices, minPrice, maxPrice) {
+ if (typeof minPrice !== 'number' || minPrice < 0 || typeof maxPrice !== 'number' || maxPrice < minPrice) {
+ return "Invalid price range!";
+ }
+ const result = [];
+for (let i = 0; i < items.length; i++) {
+ const item = items[i][0];
+ const price = prices[i][0];
+ if (typeof item === 'string' && typeof price === 'number' && price >= minPrice && price <= maxPrice) {
+ result.push([item, price]);
+ }
+ }
+ return result.length > 0 ? result : "No items within the specified price range!";
+}
