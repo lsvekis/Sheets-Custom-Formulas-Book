@@ -1,0 +1,18 @@
+// Find the Most Frequent Customer Visits
+/**
+ * Finds the customers with the most frequent visits.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} visits The range containing visit counts.
+ * @param {number} n The number of top frequent customers to return.
+ * @return {array|string} An array listing the top-N frequent customers and their visit counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOP_N_FREQUENT_CUSTOMERS(customers, visits, n) {
+ if (typeof n !== 'number' || n <= 0) return "Invalid value for N";
+ const data = customers.map((customer, index) => ({ customer: customer[0], count: visits[index][0] }))
+ .filter(item => typeof item.customer === 'string' && typeof item.count === 'number')
+ .sort((a, b) => b.count - a.count);
+ const result = data.slice(0, n).map(item => [item.customer, item.count]);
+ return result.length > 0 ? result : "No valid data!";
+}
