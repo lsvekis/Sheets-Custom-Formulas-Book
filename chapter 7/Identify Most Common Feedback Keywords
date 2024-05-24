@@ -1,0 +1,25 @@
+// Identify Most Common Feedback Keywords
+/**
+ * Identifies the most common keywords in customer feedback comments.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} feedback The range containing feedback comments.
+ * @return {array|string} An array listing the most common keywords and their counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function COMMON_FEEDBACK_KEYWORDS(customers, feedback) {
+ const wordCounts = {};
+ const stopwords = ['the', 'and', 'is', 'are', 'was', 'were', 'but', 'a', 'an', 'to', 'of', 'for'];
+ feedback.flat().forEach(comment => {
+ if (typeof comment === 'string') {
+ const words = comment.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+ words.forEach(word => {
+ if (word && !stopwords.includes(word)) {
+ wordCounts[word] = (wordCounts[word] || 0) + 1;
+ }
+ });
+ }
+ });
+ const result = Object.entries(wordCounts).map(([word, count]) => [word, count]).sort((a, b) => b[1] - a[1]);
+ return result.length > 0 ? result : "No valid keywords found!";
+}
