@@ -1,0 +1,28 @@
+// Identify Employees with Long Tenure
+/**
+ * Identifies employees who have been with the company for more than the specified number of years.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} hireDates The range containing hire dates of each employee.
+ * @param {number} minYears The minimum number of years required for long tenure.
+ * @return {array|string} An array listing employees with long tenure, or an error message if input data is invalid.
+ * @customfunction
+ */
+function LONG_TENURE_EMPLOYEES(employees, hireDates, minYears) {
+ if (typeof minYears !== 'number' || minYears <= 0) return "Invalid value for minimum years";
+ const today = new Date();
+ const result = [];
+for (let i = 0; i < employees.length; i++) {
+ const hireDate = new Date(hireDates[i][0]);
+ if (!isNaN(hireDate)) {
+ let tenureYears = today.getFullYear() - hireDate.getFullYear();
+ if (today.getMonth() < hireDate.getMonth() || (today.getMonth() === hireDate.getMonth() && today.getDate() < hireDate.getDate())) {
+ tenureYears--;
+ }
+ if (tenureYears >= minYears) {
+ result.push([employees[i][0], tenureYears + ' years']);
+ }
+ }
+ }
+ return result.length > 0 ? result : "No employees found with long tenure!";
+}
