@@ -1,0 +1,22 @@
+//Monitor Contract Expiration Dates
+/**
+ * Monitors and alerts about contracts due to expire within the next month.
+ *
+ * @param {range} contractIDs The range containing contract IDs.
+ * @param {range} expirationDates The range containing expiration dates.
+ * @return {array|string} An array listing contracts expiring within the next month, or an error message if no such contracts are found.
+ * @customfunction
+ */
+function MONITOR_CONTRACT_EXPIRATIONS(contractIDs, expirationDates) {
+ const today = new Date();
+ const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+ const results = [];
+for (let i = 0; i < contractIDs.length; i++) {
+ const contractID = contractIDs[i][0];
+ const expirationDate = new Date(expirationDates[i][0]);
+ if (expirationDate >= today && expirationDate <= nextMonth) {
+ results.push([contractID, expirationDate.toISOString().split('T')[0]]);
+ }
+ }
+ return results.length > 0 ? results : "No contracts expiring within the next month.";
+}
