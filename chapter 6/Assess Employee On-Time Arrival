@@ -1,0 +1,21 @@
+//Assess Employee On-Time Arrival
+/**
+ * Identifies employees who are consistently on time.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} days The range containing attendance status for multiple days.
+ * @return {array|string} An array listing employees who are consistently on time, or an error message if data is invalid.
+ * @customfunction
+ */
+function ASSESS_ON_TIME_ARRIVAL(employees, days) {
+ const results = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const daysArray = days[i];
+ const allOnTime = daysArray.every(status => status === "On Time");
+ if (allOnTime) {
+ results.push([employee]);
+ }
+ }
+ return results.length > 0 ? results : "No consistently on-time employees.";
+}
