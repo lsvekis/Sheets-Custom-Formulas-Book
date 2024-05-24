@@ -1,0 +1,25 @@
+//Identify Customers with Multiple Purchases
+/**
+ * Identifies customers who have made multiple purchases.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} purchases The range containing purchase information.
+ * @return {array|string} An array with customer names and their purchase counts, or an error message if no customers are found.
+ * @customfunction
+ */
+function MULTIPLE_PURCHASE_CUSTOMERS(customers, purchases) {
+ const customerCounts = {};
+ const result = [];
+for (let i = 0; i < customers.length; i++) {
+ const customer = customers[i][0];
+ if (typeof customer === 'string') {
+ customerCounts[customer] = (customerCounts[customer] || 0) + 1;
+ }
+ }
+ Object.entries(customerCounts).forEach(([customer, count]) => {
+ if (count > 1) {
+ result.push([customer, count]);
+ }
+ });
+ return result.length > 0 ? result : "No customers with multiple purchases found!";
+}
