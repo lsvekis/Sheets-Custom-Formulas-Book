@@ -1,0 +1,21 @@
+// Calculate Percentage Distribution by Region
+/**
+ * Calculates the percentage distribution of sales by region.
+ *
+ * @param {range} regions The range containing region names.
+ * @param {range} sales The range containing sales values for each region.
+ * @return {array|string} An array with regions and their percentage distribution, or an error message if input data is invalid.
+ * @customfunction
+ */
+function PERCENTAGE_DISTRIBUTION_BY_REGION(regions, sales) {
+ const totalSales = sales.flat().reduce((sum, value) => typeof value === 'number' ? sum + value : sum, 0);
+ if (totalSales === 0) return "No valid sales data!";
+ const result = regions.map((region, index) => {
+ const sale = sales[index][0];
+ if (typeof sale === 'number') {
+ return [region[0], ((sale / totalSales) * 100).toFixed(2) + '%'];
+ }
+ return [region[0], "Invalid data"];
+ });
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
