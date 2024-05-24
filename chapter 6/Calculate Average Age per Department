@@ -1,0 +1,25 @@
+//Calculate Average Age per Department
+/**
+ * Calculates the average age of employees in each department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} ages The range containing the ages of employees.
+ * @return {array|string} An array with department names and their average age, or an error message if input data is invalid.
+ * @customfunction
+ */
+function AVERAGE_AGE_BY_DEPARTMENT(departments, ages) {
+ const departmentAges = {};
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const age = ages[i][0];
+ if (typeof department === 'string' && typeof age === 'number') {
+ if (!departmentAges[department]) departmentAges[department] = { total: 0, count: 0 };
+ departmentAges[department].total += age;
+ departmentAges[department].count++;
+ }
+ }
+ const result = Object.entries(departmentAges).map(([department, data]) => [
+ department, (data.total / data.count).toFixed(2)
+ ]);
+ return result.length > 0 ? result : "No valid data!";
+}
