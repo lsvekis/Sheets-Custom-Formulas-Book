@@ -1,0 +1,13 @@
+//Calculate Total Time Spent on Tasks
+/**
+ * Calculates the total time spent on tasks.
+ *
+ * @param {range} tasks The range containing task names.
+ * @param {range} hours The range containing hours spent on each task.
+ * @return {number|string} The total time spent on tasks, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_TIME_SPENT(tasks, hours) {
+ const totalHours = hours.flat().reduce((sum, value) => typeof value === 'number' ? sum + value : sum, 0);
+ return totalHours > 0 ? totalHours : "Invalid or empty data!";
+}
