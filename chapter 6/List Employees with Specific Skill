@@ -1,0 +1,20 @@
+//List Employees with Specific Skill
+/**
+ * Lists employees who possess a specific skill.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} skills The range containing skills for each employee.
+ * @param {string} skill The specific skill to search for.
+ * @return {array|string} An array listing employees with the specified skill, or an error message if no matching employees are found.
+ * @customfunction
+ */
+function EMPLOYEES_WITH_SKILL(employees, skills, skill) {
+ if (typeof skill !== 'string' || skill.trim() === '') return "Invalid skill input!";
+ const result = [];
+for (let i = 0; i < employees.length; i++) {
+ if (skills[i][0] && skills[i][0].toLowerCase().includes(skill.toLowerCase())) {
+ result.push([employees[i][0]]);
+ }
+ }
+ return result.length > 0 ? result : "No employees with the specified skill!";
+}
