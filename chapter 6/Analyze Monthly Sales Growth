@@ -1,0 +1,20 @@
+//Analyze Monthly Sales Growth
+/**
+ * Analyzes monthly sales growth, calculating the percentage change from the previous month.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} sales The range containing sales figures for each month.
+ * @return {array|string} An array listing each month with the percentage change in sales from the previous month, or an error message if data is invalid.
+ * @customfunction
+ */
+function ANALYZE_MONTHLY_SALES_GROWTH(months, sales) {
+ const results = [];
+ for (let i = 1; i < months.length; i++) {
+ const month = months[i][0];
+ const previousSales = sales[i - 1][0];
+ const currentSales = sales[i][0];
+ const growthRate = ((currentSales - previousSales) / previousSales) * 100;
+ results.push([month, growthRate.toFixed(2) + "%"]);
+ }
+ return results.length > 0 ? results : "Insufficient data for growth analysis.";
+}
