@@ -1,0 +1,23 @@
+// Elapsed Time Between Start and End Dates
+/**
+ * Calculates the number of days between the start and end dates for tasks.
+ *
+ * @param {range} tasks The range containing task names.
+ * @param {range} startDates The range containing start dates for each task.
+ * @param {range} endDates The range containing end dates for each task.
+ * @return {array|string} An array listing tasks and their durations in days, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TASK_DURATION_IN_DAYS(tasks, startDates, endDates) {
+ const result = [];
+for (let i = 0; i < tasks.length; i++) {
+ const task = tasks[i][0];
+ const startDate = new Date(startDates[i][0]);
+ const endDate = new Date(endDates[i][0]);
+ if (typeof task === 'string' && !isNaN(startDate) && !isNaN(endDate) && startDate <= endDate) {
+ const durationInDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+ result.push([task, durationInDays + ' days']);
+ }
+ }
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
