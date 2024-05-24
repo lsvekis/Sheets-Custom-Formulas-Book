@@ -1,0 +1,22 @@
+// Calculate Cumulative Savings Over Time
+/**
+ * Calculates the cumulative savings over time based on monthly deposits.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} deposits The range containing monthly deposit amounts.
+ * @return {array|string} An array listing months and their cumulative savings, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CUMULATIVE_SAVINGS_OVER_TIME(months, deposits) {
+ let cumulativeSavings = 0;
+ const result = [];
+for (let i = 0; i < months.length; i++) {
+ const month = months[i][0];
+ const deposit = deposits[i][0];
+ if (typeof month === 'string' && typeof deposit === 'number') {
+ cumulativeSavings += deposit;
+ result.push([month, cumulativeSavings.toFixed(2)]);
+ }
+ }
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
