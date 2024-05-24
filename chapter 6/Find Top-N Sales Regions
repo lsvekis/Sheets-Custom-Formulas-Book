@@ -1,0 +1,23 @@
+//Find Top-N Sales Regions
+/**
+ * Identifies the top-N sales regions based on total sales.
+ *
+ * @param {range} regions The range containing region names.
+ * @param {range} sales The range containing the sales data.
+ * @param {number} n The number of top regions to return.
+ * @return {array|string} An array with regions and their total sales, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOP_N_SALES_REGIONS(regions, sales, n) {
+ if (typeof n !== 'number' || n <= 0) return "Invalid value for N";
+ const regionSales = {};
+for (let i = 0; i < regions.length; i++) {
+ const region = regions[i][0];
+ const sale = sales[i][0];
+ if (typeof region === 'string' && typeof sale === 'number') {
+ regionSales[region] = (regionSales[region] || 0) + sale;
+ }
+ }
+ const result = Object.entries(regionSales).sort((a, b) => b[1] - a[1]).slice(0, n).map(([region, total]) => [region, total.toFixed(2)]);
+ return result.length > 0 ? result : "No valid data!";
+}
