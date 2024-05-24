@@ -1,0 +1,24 @@
+// Categorize Expenses into Ranges
+/**
+ * Categorizes expenses into specified ranges.
+ *
+ * @param {range} expenses The range containing expense names.
+ * @param {range} amounts The range containing expense amounts.
+ * @return {array|string} An array listing expenses and their respective ranges, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CATEGORIZE_EXPENSES_BY_RANGE(expenses, amounts) {
+ function findRange(amount) {
+ if (amount <= 100) return 'Low (<= 100)';
+ else if (amount <= 500) return 'Medium (101 - 500)';
+ else return 'High (> 500)';
+ }
+ const result = expenses.map((expense, index) => {
+ const amount = amounts[index][0];
+ if (typeof amount === 'number') {
+ return [expense[0], findRange(amount)];
+ }
+ return [expense[0], "Invalid amount"];
+ });
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
