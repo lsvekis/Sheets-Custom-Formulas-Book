@@ -1,0 +1,23 @@
+// Calculate Product Discounts
+/**
+ * Calculates the discounted prices of products.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} prices The range containing original prices.
+ * @param {range} discounts The range containing discount percentages.
+ * @return {array|string} An array listing products and their discounted prices, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CALCULATE_PRODUCT_DISCOUNTS(products, prices, discounts) {
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const price = prices[i][0];
+ const discount = discounts[i][0];
+ if (typeof product === 'string' && typeof price === 'number' && typeof discount === 'number' && discount >= 0 && discount <= 100) {
+ const finalPrice = price - (price * (discount / 100));
+ result.push([product, finalPrice.toFixed(2)]);
+ }
+ }
+ return result.length > 0 ? result : "Invalid or empty data!";
+}
