@@ -1,0 +1,26 @@
+// Find Minimum and Maximum Temperatures per Month
+/**
+ * Identifies the minimum and maximum temperatures for each month.
+ *
+ * @param {range} dates The range containing the dates.
+ * @param {range} temperatures The range containing temperature readings.
+ * @return {array|string} An array listing months with their minimum and maximum temperatures, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MIN_MAX_TEMPERATURES_PER_MONTH(dates, temperatures) {
+ const monthlyTemps = {};
+for (let i = 0; i < dates.length; i++) {
+ const date = new Date(dates[i][0]);
+ const temp = temperatures[i][0];
+ if (!isNaN(date) && typeof temp === 'number') {
+ const monthYear = date.toISOString().slice(0, 7);
+ if (!monthlyTemps[monthYear]) monthlyTemps[monthYear] = { min: temp, max: temp };
+ monthlyTemps[monthYear].min = Math.min(monthlyTemps[monthYear].min, temp);
+ monthlyTemps[monthYear].max = Math.max(monthlyTemps[monthYear].max, temp);
+ }
+ }
+ const result = Object.entries(monthlyTemps).map(([monthYear, data]) => [
+ monthYear, data.min + "°C", data.max + "°C"
+ ]);
+ return result.length > 0 ? result : "No valid data!";
+}
