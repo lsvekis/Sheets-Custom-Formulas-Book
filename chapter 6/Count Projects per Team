@@ -1,0 +1,20 @@
+//Count Projects per Team
+/**
+ * Counts the number of projects assigned to each team.
+ *
+ * @param {range} teams The range containing team names.
+ * @param {range} projects The range containing project names.
+ * @return {array|string} An array with teams and their project counts, or an error message if input data is invalid.
+ * @customfunction
+ */
+function COUNT_PROJECTS_PER_TEAM(teams, projects) {
+ const projectCounts = {};
+for (let i = 0; i < teams.length; i++) {
+ const team = teams[i][0];
+ if (typeof team === 'string') {
+ projectCounts[team] = (projectCounts[team] || 0) + 1;
+ }
+ }
+ const result = Object.entries(projectCounts).map(([team, count]) => [team, count]);
+ return result.length > 0 ? result : "No valid data!";
+}
