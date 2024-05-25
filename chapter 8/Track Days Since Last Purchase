@@ -1,0 +1,23 @@
+/**
+ * Calculates the number of days since each customer's last purchase.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} lastPurchaseDates The range containing the last purchase dates for each customer.
+ * @return {array|string} An array listing customers and the number of days since their last purchase, or an error message if input data is invalid.
+ * @customfunction
+ */
+function DAYS_SINCE_LAST_PURCHASE(customers, lastPurchaseDates) {
+ const today = new Date();
+ const result = [];
+for (let i = 0; i < customers.length; i++) {
+ const customer = customers[i][0];
+ const lastPurchaseDate = new Date(lastPurchaseDates[i][0]);
+ if (!isNaN(lastPurchaseDate)) {
+ const daysSince = Math.floor((today - lastPurchaseDate) / (1000 * 60 * 60 * 24));
+ result.push([customer, daysSince + ' days']);
+ } else {
+ result.push([customer, "Invalid date"]);
+ }
+ }
+ return result.length > 0 ? result : "No valid data!";
+}
