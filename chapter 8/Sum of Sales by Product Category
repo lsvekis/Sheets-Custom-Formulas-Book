@@ -1,0 +1,21 @@
+// Sum of Sales by Product Category
+/**
+ * Calculates the total sales for each product category.
+ *
+ * @param {range} categories The range containing product categories.
+ * @param {range} sales The range containing sales amounts.
+ * @return {array|string} An array listing product categories and their total sales, or an error message if input data is invalid.
+ * @customfunction
+ */
+function SUM_OF_SALES_BY_CATEGORY(categories, sales) {
+ const categorySales = {};
+for (let i = 0; i < categories.length; i++) {
+ const category = categories[i][0];
+ const sale = sales[i][0];
+ if (typeof category === 'string' && typeof sale === 'number') {
+ categorySales[category] = (categorySales[category] || 0) + sale;
+ }
+ }
+ const result = Object.entries(categorySales).map(([category, total]) => [category, total]);
+ return result.length > 0 ? result : "No valid data!";
+}
