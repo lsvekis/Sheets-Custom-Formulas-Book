@@ -1,0 +1,27 @@
+// Calculate Weighted Average Score
+/**
+ * Calculates the weighted average score for assessments.
+ *
+ * @param {range} assessments The range containing assessment names.
+ * @param {range} scores The range containing scores.
+ * @param {range} weights The range containing weights in percentage.
+ * @return {number|string} The weighted average score or an error message if input data is invalid.
+ * @customfunction
+ */
+function WEIGHTED_AVERAGE_SCORE(assessments, scores, weights) {
+ let totalWeightedScore = 0;
+ let totalWeight = 0;
+for (let i = 0; i < assessments.length; i++) {
+ const score = scores[i][0];
+ const weight = weights[i][0];
+ if (typeof score === 'number' && typeof weight === 'number') {
+ totalWeightedScore += score * (weight / 100);
+ totalWeight += weight;
+ }
+ }
+ if (totalWeight === 100) {
+ return totalWeightedScore.toFixed(2);
+ } else {
+ return "Weights do not sum up to 100%";
+ }
+}
