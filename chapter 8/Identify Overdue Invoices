@@ -1,0 +1,23 @@
+// Identify Overdue Invoices
+/**
+ * Identifies overdue invoices based on due dates.
+ *
+ * @param {range} invoices The range containing invoice identifiers.
+ * @param {range} dueDates The range containing due dates for each invoice.
+ * @param {range} amounts The range containing invoice amounts.
+ * @return {array|string} An array listing overdue invoices and their amounts, or an error message if no overdue invoices are found.
+ * @customfunction
+ */
+function IDENTIFY_OVERDUE_INVOICES(invoices, dueDates, amounts) {
+ const today = new Date();
+ const result = [];
+for (let i = 0; i < invoices.length; i++) {
+ const invoice = invoices[i][0];
+ const dueDate = new Date(dueDates[i][0]);
+ const amount = amounts[i][0];
+ if (!isNaN(dueDate) && typeof amount === 'number' && dueDate < today) {
+ result.push([invoice, dueDate.toISOString().split('T')[0], amount.toFixed(2)]);
+ }
+ }
+ return result.length > 0 ? result : "No overdue invoices found!";
+}
