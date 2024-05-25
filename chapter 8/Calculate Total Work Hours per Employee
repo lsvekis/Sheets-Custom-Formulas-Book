@@ -1,0 +1,21 @@
+// Calculate Total Work Hours per Employee
+/**
+ * Calculates the total work hours of each employee across multiple projects.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} hours The range containing hours spent on projects.
+ * @return {array|string} An array listing employees and their total work hours, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_WORK_HOURS_PER_EMPLOYEE(employees, hours) {
+ const workHours = {};
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const hour = hours[i][0];
+ if (typeof employee === 'string' && typeof hour === 'number') {
+ workHours[employee] = (workHours[employee] || 0) + hour;
+ }
+ }
+ const result = Object.entries(workHours).map(([employee, total]) => [employee, total.toFixed(2)]);
+ return result.length > 0 ? result : "No valid data!";
+}
