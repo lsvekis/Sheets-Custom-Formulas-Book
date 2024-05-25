@@ -1,0 +1,20 @@
+// List Top-N Items by Sales Volume
+
+
+/**
+ * Lists the top-N items by sales volume.
+ *
+ * @param {range} items The range containing item names.
+ * @param {range} volumes The range containing sales volumes for each item.
+ * @param {number} n The number of top items to return.
+ * @return {array|string} An array listing the top-N items and their sales volumes, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOP_N_ITEMS_BY_SALES_VOLUME(items, volumes, n) {
+ if (typeof n !== 'number' || n <= 0) return "Invalid value for N";
+ const data = items.map((item, index) => ({ item: item[0], volume: volumes[index][0] }))
+ .filter(entry => typeof entry.item === 'string' && typeof entry.volume === 'number')
+ .sort((a, b) => b.volume - a.volume);
+ const result = data.slice(0, n).map(entry => [entry.item, entry.volume]);
+ return result.length > 0 ? result : "No valid data!";
+}
