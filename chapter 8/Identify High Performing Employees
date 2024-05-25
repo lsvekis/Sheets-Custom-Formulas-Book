@@ -1,0 +1,21 @@
+// Identify High Performing Employees
+/**
+ * Identifies high performing employees based on a performance rating threshold.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} ratings The range containing performance ratings.
+ * @param {number} threshold The performance rating threshold.
+ * @return {array|string} An array listing employees who exceed the performance threshold, or an error message if no employees meet the criteria.
+ * @customfunction
+ */
+function HIGH_PERFORMING_EMPLOYEES(employees, ratings, threshold) {
+ const result = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const rating = ratings[i][0];
+ if (typeof rating === 'number' && rating > threshold) {
+ result.push([employee, rating]);
+ }
+ }
+ return result.length > 0 ? result : "No high performing employees found!";
+}
