@@ -1,0 +1,24 @@
+// Calculate Number of Days Since Last Activity
+/**
+ * Calculates the number of days since the last recorded activity.
+ *
+ * @param {range} users The range containing user names.
+ * @param {range} lastActivityDates The range containing the last activity dates.
+ * @return {array|string} An array listing users and their days since the last activity, or an error message if input data is invalid.
+ * @customfunction
+ */
+function DAYS_SINCE_LAST_ACTIVITY(users, lastActivityDates) {
+ const today = new Date();
+ const result = [];
+for (let i = 0; i < users.length; i++) {
+ const user = users[i][0];
+ const lastActivityDate = new Date(lastActivityDates[i][0]);
+ if (!isNaN(lastActivityDate)) {
+ const diffDays = Math.floor((today - lastActivityDate) / (1000 * 60 * 60 * 24));
+ result.push([user, diffDays + ' days']);
+ } else {
+ result.push([user, "Invalid date"]);
+ }
+ }
+ return result.length > 0 ? result : "No valid data!";
+}
