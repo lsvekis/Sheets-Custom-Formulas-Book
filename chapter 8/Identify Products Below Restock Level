@@ -1,0 +1,22 @@
+// Identify Products Below Restock Level
+/**
+ * Identifies products that are below restock level.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} currentStocks The range containing current stock quantities.
+ * @param {range} restockLevels The range containing restock level quantities.
+ * @return {array|string} An array listing products that need restocking, or an error message if no products need restocking.
+ * @customfunction
+ */
+function PRODUCTS_BELOW_RESTOCK_LEVEL(products, currentStocks, restockLevels) {
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const currentStock = currentStocks[i][0];
+ const restockLevel = restockLevels[i][0];
+ if (typeof currentStock === 'number' && typeof restockLevel === 'number' && currentStock < restockLevel) {
+ result.push([product, currentStock]);
+ }
+ }
+ return result.length > 0 ? result : "No products below restock level.";
+}
