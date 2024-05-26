@@ -1,0 +1,21 @@
+// Compute Weighted Grade Averages
+/**
+ * Computes the weighted average grade for students.
+ *
+ * @param {range} students The range containing student names.
+ * @param {range} grades1 The range containing grades for Assignment 1.
+ * @param {range} grades2 The range containing grades for Assignment 2.
+ * @return {array|string} An array listing each student with their weighted average grade, or an error message if data is invalid.
+ * @customfunction
+ */
+function WEIGHTED_GRADE_AVERAGES(students, grades1, grades2) {
+ const results = [];
+for (let i = 0; i < students.length; i++) {
+ const student = students[i][0];
+ const grade1 = grades1[i][0];
+ const grade2 = grades2[i][0];
+ const weightedAverage = (grade1 * 0.4) + (grade2 * 0.6);
+ results.push([student, weightedAverage.toFixed(2)]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
