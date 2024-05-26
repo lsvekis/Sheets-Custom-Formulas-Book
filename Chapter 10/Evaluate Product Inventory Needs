@@ -1,0 +1,22 @@
+// Evaluate Product Inventory Needs
+/**
+ * Evaluates which products need to be reordered.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} currentStocks The range containing current stock quantities.
+ * @param {range} minimumStocks The range containing minimum stock levels.
+ * @return {array|string} An array listing products that need reordering, or an error message if no reordering is needed.
+ * @customfunction
+ */
+function EVALUATE_INVENTORY_NEEDS(products, currentStocks, minimumStocks) {
+ const results = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const currentStock = currentStocks[i][0];
+ const minimumStock = minimumStocks[i][0];
+ if (currentStock < minimumStock) {
+ results.push([product]);
+ }
+ }
+ return results.length > 0 ? results : "All products are sufficiently stocked.";
+}
