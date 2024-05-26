@@ -1,0 +1,22 @@
+// Monitor Project Phase Timeliness
+/**
+ * Monitors project phase timeliness, indicating if phases are on schedule, delayed, or completed.
+ *
+ * @param {range} projects The range containing project names.
+ * @param {range} phaseEndDates The range containing phase end dates.
+ * @param {range} statuses The range containing current status of each project.
+ * @return {array|string} An array listing each project with its timeliness status, or an error message if data is invalid.
+ * @customfunction
+ */
+function MONITOR_PROJECT_TIMELINESS(projects, phaseEndDates, statuses) {
+ const today = new Date();
+ const results = [];
+for (let i = 0; i < projects.length; i++) {
+ const project = projects[i][0];
+ const endDate = new Date(phaseEndDates[i][0]);
+ const status = statuses[i][0];
+ const timeliness = status === "Completed" ? "Completed" : (endDate < today ? "Delayed" : "On Schedule");
+ results.push([project, timeliness]);
+ }
+ return results.length > 0 ? results : "No projects to monitor.";
+}
