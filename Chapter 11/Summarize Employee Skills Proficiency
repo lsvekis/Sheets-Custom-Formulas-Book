@@ -1,0 +1,28 @@
+// Summarize Employee Skills Proficiency
+/**
+ * Summarizes employee skills proficiency by department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} employees The range containing employee names.
+ * @param {range} proficiencies The range containing skill proficiency ratings.
+ * @return {array|string} An array summarizing average proficiency ratings for each department, or an error message if input data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_SKILLS_PROFICIENCY(departments, employees, proficiencies) {
+ const summary = {};
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const proficiency = proficiencies[i][0];
+ if (!summary[department]) {
+ summary[department] = { total: 0, count: 0 };
+ }
+ summary[department].total += proficiency;
+ summary[department].count++;
+ }
+ const results = [];
+ Object.keys(summary).forEach(department => {
+ const average = summary[department].total / summary[department].count;
+ results.push([department, average.toFixed(2)]);
+ });
+ return results.length > 0 ? results : "No valid data!";
+}
