@@ -1,0 +1,22 @@
+// Calculate Budget Variance
+/**
+ * Calculates budget variance for each department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} budgeted The range containing budgeted amounts.
+ * @param {range} actual The range containing actual spending.
+ * @return {array|string} An array listing each department with their budget variance, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_BUDGET_VARIANCE(departments, budgeted, actual) {
+ const results = [];
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const budget = budgeted[i][0];
+ const spend = actual[i][0];
+ const variance = spend - budget;
+ const status = variance > 0 ? "Over Budget" : variance < 0 ? "Under Budget" : "On Budget";
+ results.push([department, status, variance]);
+ }
+ return results.length > 0 ? results : "All departments are on budget.";
+}
