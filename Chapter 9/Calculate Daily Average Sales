@@ -1,0 +1,18 @@
+// Calculate Daily Average Sales
+/**
+ * Calculates the daily average sales from a week's data.
+ *
+ * @param {range} days The range containing day names.
+ * @param {range} sales The range containing sales data for each day.
+ * @return {number|string} The daily average sales or an error message if input data is invalid.
+ * @customfunction
+ */
+function DAILY_AVERAGE_SALES(days, sales) {
+ const totalSales = sales.reduce((acc, val) => acc + val[0], 0);
+ const daysCount = sales.length;
+ if (daysCount > 0) {
+ return (totalSales / daysCount).toFixed(2);
+ } else {
+ return "Invalid or empty data!";
+ }
+}
