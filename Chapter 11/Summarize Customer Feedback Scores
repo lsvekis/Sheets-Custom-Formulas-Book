@@ -1,0 +1,27 @@
+// Summarize Customer Feedback Scores
+/**
+ * Summarizes customer feedback scores by type.
+ *
+ * @param {range} types The range containing feedback types.
+ * @param {range} scores The range containing feedback scores.
+ * @return {array|string} An array listing each feedback type with its average score, or an error message if input data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_FEEDBACK_SCORES(types, scores) {
+ const feedbackSummary = {};
+for (let i = 0; i < types.length; i++) {
+ const type = types[i][0];
+ const score = scores[i][0];
+ if (!feedbackSummary[type]) {
+ feedbackSummary[type] = { total: 0, count: 0 };
+ }
+ feedbackSummary[type].total += score;
+ feedbackSummary[type].count++;
+ }
+ const results = [];
+ Object.keys(feedbackSummary).forEach(type => {
+ const average = (feedbackSummary[type].total / feedbackSummary[type].count).toFixed(1);
+ results.push([type, average]);
+ });
+ return results.length > 0 ? results : "No feedback data available.";
+}
