@@ -1,0 +1,29 @@
+// Calculate Average Product Rating
+
+
+/**
+ * Calculates the average rating for each product based on customer reviews.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} ratings The range containing ratings.
+ * @return {array|string} An array listing each product with its average rating, or an error message if input data is invalid.
+ * @customfunction
+ */
+function AVERAGE_PRODUCT_RATING(products, ratings) {
+ const ratingSummary = {};
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const rating = ratings[i][0];
+ if (!ratingSummary[product]) {
+ ratingSummary[product] = { total: 0, count: 0 };
+ }
+ ratingSummary[product].total += rating;
+ ratingSummary[product].count++;
+ }
+ const results = [];
+ Object.keys(ratingSummary).forEach(product => {
+ const average = ratingSummary[product].total / ratingSummary[product].count;
+ results.push([product, average.toFixed(2)]);
+ });
+ return results.length > 0 ? results : "No valid data!";
+}
