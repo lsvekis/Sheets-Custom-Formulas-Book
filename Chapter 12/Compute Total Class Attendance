@@ -1,0 +1,21 @@
+// Compute Total Class Attendance
+/**
+ * Computes the total attendance for a class over a series of days.
+ *
+ * @param {range} dates The range containing dates.
+ * @param {range} students The range containing the number of students present each day.
+ * @return {number|string} The total number of student attendances or an error message if data is invalid.
+ * @customfunction
+ */
+function COMPUTE_TOTAL_ATTENDANCE(dates, students) {
+ let totalAttendance = 0;
+for (let i = 0; i < students.length; i++) {
+ const studentCount = students[i][0];
+ if (typeof studentCount === 'number') {
+ totalAttendance += studentCount;
+ } else {
+ return "Invalid data in attendance records.";
+ }
+ }
+ return totalAttendance;
+}
