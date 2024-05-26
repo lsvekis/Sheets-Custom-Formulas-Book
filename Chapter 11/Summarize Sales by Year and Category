@@ -1,0 +1,28 @@
+// Summarize Sales by Year and Category
+/**
+ * Summarizes sales by year and category.
+ *
+ * @param {range} years The range containing year data.
+ * @param {range} categories The range containing category names.
+ * @param {range} sales The range containing sales figures.
+ * @return {array|string} An array summarizing sales by year and category, or an error message if data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_SALES_BY_YEAR_CATEGORY(years, categories, sales) {
+ const salesSummary = {};
+for (let i = 0; i < years.length; i++) {
+ const year = years[i][0];
+ const category = categories[i][0];
+ const sale = sales[i][0];
+ if (!salesSummary[year]) salesSummary[year] = {};
+ if (!salesSummary[year][category]) salesSummary[year][category] = 0;
+ salesSummary[year][category] += sale;
+ }
+ const results = [];
+ Object.keys(salesSummary).forEach(year => {
+ Object.keys(salesSummary[year]).forEach(category => {
+ results.push([year, category, salesSummary[year][category]]);
+ });
+ });
+ return results.length > 0 ? results : "No sales data to summarize.";
+}
