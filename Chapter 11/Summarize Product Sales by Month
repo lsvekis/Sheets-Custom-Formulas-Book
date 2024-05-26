@@ -1,0 +1,30 @@
+// Summarize Product Sales by Month
+
+
+/**
+ * Summarizes product sales by month.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} products The range containing product names.
+ * @param {range} sales The range containing sales figures.
+ * @return {array|string} An array summarizing total sales for each product by month, or an error message if data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_SALES_BY_MONTH(months, products, sales) {
+ const summary = {};
+for (let i = 0; i < months.length; i++) {
+ const month = months[i][0];
+ const product = products[i][0];
+ const sale = sales[i][0];
+ if (!summary[month]) summary[month] = {};
+ if (!summary[month][product]) summary[month][product] = 0;
+ summary[month][product] += sale;
+ }
+ const results = [];
+ Object.keys(summary).forEach(month => {
+ Object.keys(summary[month]).forEach(product => {
+ results.push([month, product, summary[month][product]]);
+ });
+ });
+ return results.length > 0 ? results : "No sales data to summarize.";
+}
