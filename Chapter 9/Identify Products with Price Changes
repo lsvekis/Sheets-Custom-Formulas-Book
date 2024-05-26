@@ -1,0 +1,22 @@
+// Identify Products with Price Changes
+/**
+ * Identifies products that have changed in price between two periods.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} prices1 The range containing prices in period 1.
+ * @param {range} prices2 The range containing prices in period 2.
+ * @return {array|string} An array listing products with price changes, or an error message if no changes are found.
+ * @customfunction
+ */
+function IDENTIFY_PRICE_CHANGES(products, prices1, prices2) {
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const price1 = prices1[i][0];
+ const price2 = prices2[i][0];
+ if (price1 !== price2) {
+ result.push([product, price1, price2]);
+ }
+ }
+ return result.length > 0 ? result : "No price changes detected.";
+}
