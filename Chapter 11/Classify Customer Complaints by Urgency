@@ -1,0 +1,20 @@
+// Classify Customer Complaints by Urgency
+/**
+ * Classifies customer complaints based on urgency.
+ *
+ * @param {range} complaintIDs The range containing complaint IDs.
+ * @param {range} descriptions The range containing descriptions of each complaint.
+ * @return {array|string} An array classifying each complaint by urgency level, or an error message if no complaints meet urgency criteria.
+ * @customfunction
+ */
+function CLASSIFY_COMPLAINTS_BY_URGENCY(complaintIDs, descriptions) {
+ const urgencyKeywords = ["immediate", "urgent", "as soon as possible", "asap"];
+ const classifiedComplaints = [];
+for (let i = 0; i < complaintIDs.length; i++) {
+ const id = complaintIDs[i][0];
+ const description = descriptions[i][0].toLowerCase();
+ const isUrgent = urgencyKeywords.some(keyword => description.includes(keyword));
+ classifiedComplaints.push([id, isUrgent ? "High Urgency" : "Normal Urgency"]);
+ }
+ return classifiedComplaints.length > 0 ? classifiedComplaints : "No complaints classified as urgent.";
+}
