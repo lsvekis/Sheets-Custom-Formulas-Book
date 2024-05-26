@@ -1,0 +1,24 @@
+// Filter Products by Price Range
+
+
+/**
+ * Lists products within a specified price range.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} prices The range containing product prices.
+ * @param {number} minPrice The minimum price of the range.
+ * @param {number} maxPrice The maximum price of the range.
+ * @return {array|string} An array listing products within the price range, or an error message if no products are found.
+ * @customfunction
+ */
+function FILTER_PRODUCTS_BY_PRICE(products, prices, minPrice, maxPrice) {
+ const filteredProducts = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const price = prices[i][0];
+ if (price >= minPrice && price <= maxPrice) {
+ filteredProducts.push([product, "$" + price.toFixed(2)]);
+ }
+ }
+ return filteredProducts.length > 0 ? filteredProducts : "No products in the specified price range.";
+}
