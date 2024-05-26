@@ -1,0 +1,25 @@
+// Calculate Customer Lifetime Value (CLV)
+/**
+ * Calculates Customer Lifetime Value.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} annualSpendings The range containing annual spending amounts.
+ * @param {range} retentionRates The range containing customer retention rates.
+ * @param {range} discountRates The range containing the discount rates.
+ * @return {array|string} An array listing customers with their CLV, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CALCULATE_CLV(customers, annualSpendings, retentionRates, discountRates) {
+ const results = [];
+for (let i = 0; i < customers.length; i++) {
+ const customer = customers[i][0];
+ const annualSpending = annualSpendings[i][0];
+ const retentionRate = retentionRates[i][0];
+ const discountRate = discountRates[i][0];
+ if (typeof annualSpending === 'number' && typeof retentionRate === 'number' && typeof discountRate === 'number') {
+ const clv = (annualSpending * retentionRate) / (discountRate + (1 - retentionRate));
+ results.push([customer, clv.toFixed(2)]);
+ }
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
