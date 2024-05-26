@@ -1,0 +1,23 @@
+// Analyze Monthly Attendance Rates
+/**
+ * Analyzes monthly attendance rates to identify months with attendance below 75%.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} attendanceCounts The range containing attendance counts.
+ * @param {range} totalStudents The range containing total number of students.
+ * @return {array|string} An array listing months with low attendance rates, or an error message if all months meet the threshold.
+ * @customfunction
+ */
+function ANALYZE_ATTENDANCE_RATES(months, attendanceCounts, totalStudents) {
+ const results = [];
+for (let i = 0; i < months.length; i++) {
+ const month = months[i][0];
+ const attendanceCount = attendanceCounts[i][0];
+ const total = totalStudents[i][0];
+ const rate = (attendanceCount / total) * 100;
+ if (rate < 75) {
+ results.push([month, rate.toFixed(2) + "%"]);
+ }
+ }
+ return results.length > 0 ? results : "All months have satisfactory attendance rates.";
+}
