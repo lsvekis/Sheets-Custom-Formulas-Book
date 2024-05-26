@@ -1,0 +1,21 @@
+// Identify Overdue Tasks
+/**
+ * Identifies overdue tasks based on their due dates.
+ *
+ * @param {range} tasks The range containing task names.
+ * @param {range} dueDates The range containing task due dates.
+ * @return {array|string} An array listing overdue tasks, or an error message if no tasks are overdue.
+ * @customfunction
+ */
+function IDENTIFY_OVERDUE_TASKS(tasks, dueDates) {
+ const today = new Date();
+ const results = [];
+for (let i = 0; i < tasks.length; i++) {
+ const task = tasks[i][0];
+ const dueDate = new Date(dueDates[i][0]);
+ if (dueDate < today) {
+ results.push([task, dueDate.toISOString().split('T')[0]]);
+ }
+ }
+ return results.length > 0 ? results : "No overdue tasks.";
+}
