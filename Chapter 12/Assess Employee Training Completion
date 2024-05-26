@@ -1,0 +1,20 @@
+// Assess Employee Training Completion
+/**
+ * Lists employees who have not completed mandatory training.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} trainingStatus The range indicating if training was completed ('Yes' or 'No').
+ * @return {array|string} An array listing employees who have not completed training, or an error message if all have completed.
+ * @customfunction
+ */
+function LIST_INCOMPLETE_TRAINING(employees, trainingStatus) {
+ const results = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const completed = trainingStatus[i][0];
+ if (completed === "No") {
+ results.push([employee]);
+ }
+ }
+ return results.length > 0 ? results : "All employees have completed the training.";
+}
