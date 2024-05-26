@@ -1,0 +1,24 @@
+// Identify Out-of-Stock Products
+
+
+
+
+/**
+ * Identifies products that are out of stock.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} stockQuantities The range containing stock quantities.
+ * @return {array|string} An array listing out-of-stock products, or an error message if all products are in stock.
+ * @customfunction
+ */
+function IDENTIFY_OUT_OF_STOCK_PRODUCTS(products, stockQuantities) {
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const stock = stockQuantities[i][0];
+ if (stock === 0) {
+ result.push([product]);
+ }
+ }
+ return result.length > 0 ? result : "All products are in stock.";
+}
