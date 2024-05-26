@@ -1,0 +1,29 @@
+
+// Generate Monthly Sales Reports
+/**
+ * Generates a monthly sales report for each product category.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} categories The range containing product categories.
+ * @param {range} sales The range containing sales figures.
+ * @return {array|string} An array summarizing total sales by month and category, or an error message if data is invalid.
+ * @customfunction
+ */
+function GENERATE_MONTHLY_SALES_REPORTS(months, categories, sales) {
+ const summary = {};
+for (let i = 0; i < months.length; i++) {
+ const month = months[i][0];
+ const category = categories[i][0];
+ const sale = sales[i][0];
+ if (!summary[month]) summary[month] = {};
+ if (!summary[month][category]) summary[month][category] = 0;
+ summary[month][category] += sale;
+ }
+ const results = [];
+ Object.keys(summary).forEach(month => {
+ Object.keys(summary[month]).forEach(category => {
+ results.push([month, category, summary[month][category]]);
+ });
+ });
+ return results.length > 0 ? results : "No sales data to summarize.";
+}
