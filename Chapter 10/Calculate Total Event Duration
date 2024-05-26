@@ -1,0 +1,21 @@
+// Calculate Total Event Duration
+/**
+ * Calculates the total duration of an event from its sessions.
+ *
+ * @param {range} sessions The range containing session names.
+ * @param {range} durations The range containing durations in hours for each session.
+ * @return {number|string} The total event duration in hours, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_EVENT_DURATION(sessions, durations) {
+ let totalDuration = 0;
+for (let i = 0; i < durations.length; i++) {
+ const duration = durations[i][0];
+ if (typeof duration === 'number') {
+ totalDuration += duration;
+ } else {
+ return "Invalid duration data!";
+ }
+ }
+ return totalDuration;
+}
