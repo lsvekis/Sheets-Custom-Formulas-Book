@@ -1,0 +1,20 @@
+// Identify High-Priority Emails
+/**
+ * Identifies high-priority emails based on content keywords.
+ *
+ * @param {range} emails The range containing email IDs.
+ * @param {range} contents The range containing the content of each email.
+ * @return {array|string} An array listing high-priority email IDs, or an error message if no high-priority emails are found.
+ * @customfunction
+ */
+function IDENTIFY_HIGH_PRIORITY_EMAILS(emails, contents) {
+ const highPriorityKeywords = ["urgent", "asap", "immediate"];
+ const highPriorityEmails = [];
+for (let i = 0; i < emails.length; i++) {
+ const content = contents[i][0].toLowerCase();
+ if (highPriorityKeywords.some(keyword => content.includes(keyword))) {
+ highPriorityEmails.push([emails[i][0]]);
+ }
+ }
+ return highPriorityEmails.length > 0 ? highPriorityEmails : "No high-priority emails identified.";
+}
