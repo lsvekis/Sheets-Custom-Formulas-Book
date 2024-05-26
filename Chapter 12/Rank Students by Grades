@@ -1,0 +1,20 @@
+// Rank Students by Grades
+
+
+/**
+ * Ranks students by their grades.
+ *
+ * @param {range} students The range containing student names.
+ * @param {range} grades The range containing student grades.
+ * @return {array|string} An array listing students ranked by their grades from highest to lowest, or an error message if data is invalid.
+ * @customfunction
+ */
+function RANK_STUDENTS_BY_GRADES(students, grades) {
+ const studentGrades = [];
+for (let i = 0; i < students.length; i++) {
+ studentGrades.push({name: students[i][0], grade: grades[i][0]});
+ }
+ studentGrades.sort((a, b) => b.grade - a.grade);
+ const results = studentGrades.map(item => [item.name, item.grade]);
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
