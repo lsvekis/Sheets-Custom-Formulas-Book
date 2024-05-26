@@ -1,0 +1,21 @@
+// Calculate Delivery Time Deviations
+/**
+ * Calculates delivery time deviations in days.
+ *
+ * @param {range} orderIDs The range containing order IDs.
+ * @param {range} expectedDates The range containing expected delivery dates.
+ * @param {range} actualDates The range containing actual delivery dates.
+ * @return {array|string} An array listing each order with its delivery time deviation in days, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_DELIVERY_DEVIATIONS(orderIDs, expectedDates, actualDates) {
+ const results = [];
+for (let i = 0; i < orderIDs.length; i++) {
+ const orderID = orderIDs[i][0];
+ const expectedDate = new Date(expectedDates[i][0]);
+ const actualDate = new Date(actualDates[i][0]);
+ const deviation = (actualDate - expectedDate) / (1000 * 3600 * 24); // Convert milliseconds to days
+ results.push([orderID, deviation]);
+ }
+ return results.length > 0 ? results : "No delivery data available.";
+}
