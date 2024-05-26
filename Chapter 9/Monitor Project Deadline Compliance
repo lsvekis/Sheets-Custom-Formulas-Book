@@ -1,0 +1,21 @@
+// Monitor Project Deadline Compliance
+/**
+ * Monitors project deadlines and reports overdue projects.
+ *
+ * @param {range} projects The range containing project names.
+ * @param {range} deadlines The range containing project deadlines.
+ * @return {array|string} An array listing overdue projects or an error message if no overdue projects are found.
+ * @customfunction
+ */
+function MONITOR_PROJECT_DEADLINES(projects, deadlines) {
+ const today = new Date();
+ const result = [];
+ for (let i = 0; i < projects.length; i++) {
+ const project = projects[i][0];
+ const deadline = new Date(deadlines[i][0]);
+ if (!isNaN(deadline) && deadline < today) {
+ result.push([project]);
+ }
+ }
+ return result.length > 0 ? result : "No overdue projects found.";
+}
