@@ -1,0 +1,31 @@
+// Summarize Product Reviews by Rating
+
+
+/**
+ * Summarizes product reviews by star rating.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} ratings The range containing star ratings.
+ * @return {array|string} An array summarizing the number of reviews per star rating for each product, or an error message if input data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_REVIEWS_BY_RATING(products, ratings) {
+ const summary = {};
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const rating = ratings[i][0];
+ if (!summary[product]) summary[product] = {1:0, 2:0, 3:0, 4:0, 5:0}; // Initialize if not exists
+ if (summary[product][rating] !== undefined) {
+ summary[product][rating]++;
+ }
+ }
+ const results = [];
+ Object.keys(summary).forEach(product => {
+ Object.keys(summary[product]).forEach(rate => {
+ if (summary[product][rate] > 0) { // Only include if there are reviews
+ results.push([product, rate, summary[product][rate]]);
+ }
+ });
+ });
+ return results.length > 0 ? results : "No review data found.";
+}
