@@ -1,0 +1,22 @@
+// Convert Employee Hours to Weeks
+
+
+/**
+ * Converts total hours worked into weeks.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} hours The range containing hours worked.
+ * @return {array|string} An array listing employees with their converted work weeks, or an error message if data is invalid.
+ * @customfunction
+ */
+function CONVERT_HOURS_TO_WEEKS(employees, hours) {
+ const results = [];
+ const hoursPerWeek = 40;
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const totalHours = hours[i][0];
+ const weeksWorked = (totalHours / hoursPerWeek).toFixed(2); // Formatting to two decimal places for precision
+ results.push([employee, weeksWorked + " weeks"]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
