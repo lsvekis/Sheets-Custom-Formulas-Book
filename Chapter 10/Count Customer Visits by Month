@@ -1,0 +1,24 @@
+// Count Customer Visits by Month
+/**
+ * Counts the number of visits each customer made per month.
+ *
+ * @param {range} customers The range containing customer names.
+ * @param {range} visitDates The range containing dates of visits.
+ * @return {array|string} An array listing each customer with their visit counts by month, or an error message if input data is invalid.
+ * @customfunction
+ */
+function VISITS_BY_MONTH(customers, visitDates) {
+ const visits = {};
+for (let i = 0; i < customers.length; i++) {
+ const customer = customers[i][0];
+ const visitDate = new Date(visitDates[i][0]);
+ const month = visitDate.getMonth() + 1; // Get the month (0-based index, hence +1)
+ const year = visitDate.getFullYear();
+ const key = customer + ' - ' + year + '-' + (month < 10 ? '0' + month : month);
+ if (!visits[key]) visits[key] = 0;
+ visits[key]++;
+ }
+ const result = Object.entries(visits).map(([key, count]) => [key, count]);
+ return result.length > 0 ? result : "No visits recorded.";
+}
+// 
