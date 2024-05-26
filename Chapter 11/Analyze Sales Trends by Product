@@ -1,0 +1,21 @@
+// Analyze Sales Trends by Product
+/**
+ * Analyzes quarterly sales trends by product.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} q1Sales The range containing Q1 sales figures.
+ * @param {range} q2Sales The range containing Q2 sales figures.
+ * @return {array|string} An array listing each product with its sales trend ("Increase", "Decrease", "Stable"), or an error message if data is invalid.
+ * @customfunction
+ */
+function ANALYZE_SALES_TRENDS(products, q1Sales, q2Sales) {
+ const results = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const salesQ1 = q1Sales[i][0];
+ const salesQ2 = q2Sales[i][0];
+ const trend = salesQ2 > salesQ1 ? "Increase" : salesQ2 < salesQ1 ? "Decrease" : "Stable";
+ results.push([product, trend]);
+ }
+ return results.length > 0 ? results : "No sales data to analyze.";
+}
