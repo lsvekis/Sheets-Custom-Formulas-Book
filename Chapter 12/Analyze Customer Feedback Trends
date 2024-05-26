@@ -1,0 +1,20 @@
+// Analyze Customer Feedback Trends
+/**
+ * Analyzes trends in customer feedback scores over months.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} scores The range containing feedback scores.
+ * @return {array|string} An array listing each month with the change in score from the previous month, or an error message if data is invalid.
+ * @customfunction
+ */
+function ANALYZE_FEEDBACK_TRENDS(months, scores) {
+ const results = [];
+ for (let i = 1; i < scores.length; i++) {
+ const previousScore = scores[i - 1][0];
+ const currentScore = scores[i][0];
+ const change = currentScore - previousScore;
+ const trend = change > 0 ? "Improving" : change < 0 ? "Declining" : "Stable";
+ results.push([months[i][0], trend, change]);
+ }
+ return results.length > 0 ? results : "Insufficient data for trend analysis.";
+}
