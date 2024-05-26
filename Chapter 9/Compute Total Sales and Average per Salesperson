@@ -1,0 +1,25 @@
+// Compute Total Sales and Average per Salesperson
+/**
+ * Computes total sales and average sales per transaction for each salesperson.
+ *
+ * @param {range} salespeople The range containing salesperson names.
+ * @param {range} amounts The range containing sale amounts.
+ * @return {array|string} An array listing each salesperson with total and average sales, or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_AND_AVERAGE_SALES(salespeople, amounts) {
+ const salesData = {};
+for (let i = 0; i < salespeople.length; i++) {
+ const salesperson = salespeople[i][0];
+ const amount = amounts[i][0];
+ if (!salesData[salesperson]) {
+ salesData[salesperson] = { total: 0, transactions: 0 };
+ }
+ salesData[salesperson].total += amount;
+ salesData[salesperson].transactions++;
+ }
+ const result = Object.entries(salesData).map(([salesperson, data]) => [
+ salesperson, data.total, (data.total / data.transactions).toFixed(2)
+ ]);
+ return result.length > 0 ? result : "No valid sales data!";
+}
