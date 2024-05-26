@@ -1,0 +1,26 @@
+// Calculate Employee Bonus Based on Performance
+/**
+ * Calculates the annual bonus based on performance ratings.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} salaries The range containing annual salaries.
+ * @param {range} ratings The range containing performance ratings.
+ * @return {array|string} An array listing employees, their performance ratings, and their bonus, or an error message if input data is invalid.
+ * @customfunction
+ */
+function CALCULATE_BONUS(employees, salaries, ratings) {
+ const results = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const salary = salaries[i][0];
+ const rating = ratings[i][0];
+ if (typeof salary === 'number' && typeof rating === 'number' && rating >= 1 && rating <= 5) {
+ const bonusPercentage = (rating - 1) * 5;
+ const bonus = salary * (bonusPercentage / 100);
+ results.push([employee, rating, bonus.toFixed(2)]);
+ } else {
+ results.push([employee, rating, "Invalid data"]);
+ }
+ }
+ return results.length > 0 ? results : "No valid data!";
+}
