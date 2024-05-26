@@ -1,0 +1,23 @@
+// Analyze Sales Performance by Region
+
+
+/**
+ * Analyzes sales performance by region against set targets.
+ *
+ * @param {range} regions The range containing region names.
+ * @param {range} sales The range containing sales figures.
+ * @param {range} targets The range containing sales targets.
+ * @return {array|string} An array listing each region with its performance status, or an error message if input data is invalid.
+ * @customfunction
+ */
+function ANALYZE_SALES_PERFORMANCE(regions, sales, targets) {
+ const results = [];
+for (let i = 0; i < regions.length; i++) {
+ const region = regions[i][0];
+ const sale = sales[i][0];
+ const target = targets[i][0];
+ const status = sale > target ? "Above Target" : sale === target ? "On Target" : "Below Target";
+ results.push([region, status]);
+ }
+ return results.length > 0 ? results : "No sales data to analyze.";
+}
