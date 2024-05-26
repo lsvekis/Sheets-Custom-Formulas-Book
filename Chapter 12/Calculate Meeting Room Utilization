@@ -1,0 +1,21 @@
+// Calculate Meeting Room Utilization
+/**
+ * Calculates the percentage of utilization for meeting rooms.
+ *
+ * @param {range} rooms The range containing room names.
+ * @param {range} totalHoursAvailable The range containing total hours available for each room.
+ * @param {range} hoursUsed The range containing the number of hours each room was used.
+ * @return {array|string} An array listing each room with its utilization percentage, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_ROOM_UTILIZATION(rooms, totalHoursAvailable, hoursUsed) {
+ const results = [];
+for (let i = 0; i < rooms.length; i++) {
+ const room = rooms[i][0];
+ const totalAvailable = totalHoursAvailable[i][0];
+ const used = hoursUsed[i][0];
+ const utilizationRate = (used / totalAvailable) * 100;
+ results.push([room, utilizationRate.toFixed(2) + "%"]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
