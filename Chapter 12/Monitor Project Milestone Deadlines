@@ -1,0 +1,24 @@
+// Monitor Project Milestone Deadlines
+/**
+ * Lists project milestones that are due within the next 7 days.
+ *
+ * @param {range} projects The range containing project names.
+ * @param {range} milestones The range containing milestone names.
+ * @param {range} dueDates The range containing due dates for each milestone.
+ * @return {array|string} An array listing projects with upcoming milestones, or an error message if no upcoming deadlines are found.
+ * @customfunction
+ */
+function MONITOR_MILESTONE_DEADLINES(projects, milestones, dueDates) {
+ const today = new Date();
+ const oneWeekLater = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+ const results = [];
+for (let i = 0; i < projects.length; i++) {
+ const project = projects[i][0];
+ const milestone = milestones[i][0];
+ const dueDate = new Date(dueDates[i][0]);
+ if (dueDate >= today && dueDate <= oneWeekLater) {
+ results.push([project, milestone, dueDate.toISOString().split('T')[0]]);
+ }
+ }
+ return results.length > 0 ? results : "No upcoming milestones within the next 7 days.";
+}
