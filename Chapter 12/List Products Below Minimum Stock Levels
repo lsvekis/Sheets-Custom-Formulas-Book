@@ -1,0 +1,22 @@
+// List Products Below Minimum Stock Levels
+/**
+ * Lists products that are below minimum stock levels.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} currentStocks The range containing current stock quantities.
+ * @param {range} minimumStocks The range containing minimum stock levels.
+ * @return {array|string} An array listing products below minimum stock levels, or an error message if all products meet stock requirements.
+ * @customfunction
+ */
+function LIST_PRODUCTS_BELOW_MIN_STOCK(products, currentStocks, minimumStocks) {
+ const results = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const currentStock = currentStocks[i][0];
+ const minimumStock = minimumStocks[i][0];
+ if (currentStock < minimumStock) {
+ results.push([product, currentStock]);
+ }
+ }
+ return results.length > 0 ? results : "All products meet or exceed minimum stock levels.";
+}
