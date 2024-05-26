@@ -1,0 +1,23 @@
+// Check Inventory for Expired Products
+
+
+/**
+ * Identifies expired products based on their expiration dates.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} expirationDates The range containing expiration dates.
+ * @return {array|string} An array listing expired products, or an error message if no expired products are found.
+ * @customfunction
+ */
+function CHECK_EXPIRED_PRODUCTS(products, expirationDates) {
+ const today = new Date();
+ const result = [];
+for (let i = 0; i < products.length; i++) {
+ const product = products[i][0];
+ const expirationDate = new Date(expirationDates[i][0]);
+ if (!isNaN(expirationDate) && expirationDate < today) {
+ result.push([product]);
+ }
+ }
+ return result.length > 0 ? result : "No expired products found.";
+}
