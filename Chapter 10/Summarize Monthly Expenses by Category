@@ -1,0 +1,28 @@
+// Summarize Monthly Expenses by Category
+/**
+ * Summarizes monthly expenses by category.
+ *
+ * @param {range} months The range containing month names.
+ * @param {range} categories The range containing expense categories.
+ * @param {range} expenses The range containing expense amounts.
+ * @return {array|string} An array listing each month with expenses summarized by category, or an error message if input data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_MONTHLY_EXPENSES(months, categories, expenses) {
+ const monthlySummary = {};
+for (let i = 0; i < months.length; i++) {
+ const month = months[i][0];
+ const category = categories[i][0];
+ const expense = expenses[i][0];
+ if (!monthlySummary[month]) monthlySummary[month] = {};
+ if (!monthlySummary[month][category]) monthlySummary[month][category] = 0;
+ monthlySummary[month][category] += expense;
+ }
+ const results = [];
+ Object.keys(monthlySummary).forEach(month => {
+ Object.keys(monthlySummary[month]).forEach(category => {
+ results.push([month, category, monthlySummary[month][category]]);
+ });
+ });
+ return results.length > 0 ? results : "No valid data!";
+}
