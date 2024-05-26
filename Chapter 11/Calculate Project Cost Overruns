@@ -1,0 +1,23 @@
+// Calculate Project Cost Overruns
+/**
+ * Calculates cost overruns for projects.
+ *
+ * @param {range} projects The range containing project names.
+ * @param {range} budgetedCosts The range containing budgeted costs.
+ * @param {range} actualCosts The range containing actual costs.
+ * @return {array|string} An array listing projects with their cost overruns, or an error message if no overruns are found.
+ * @customfunction
+ */
+function CALCULATE_COST_OVERRUNS(projects, budgetedCosts, actualCosts) {
+ const results = [];
+for (let i = 0; i < projects.length; i++) {
+ const project = projects[i][0];
+ const budgetedCost = budgetedCosts[i][0];
+ const actualCost = actualCosts[i][0];
+ const overrun = actualCost - budgetedCost;
+ if (overrun > 0) {
+ results.push([project, overrun]);
+ }
+ }
+ return results.length > 0 ? results : "No cost overruns detected.";
+}
