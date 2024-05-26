@@ -1,0 +1,22 @@
+// Calculate Monthly Energy Consumption
+
+
+/**
+ * Calculates the monthly energy consumption for each department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} dailyUsages The range containing daily energy usage in kWh.
+ * @param {number} daysInMonth The number of days in the month.
+ * @return {array|string} An array listing each department with its monthly energy consumption, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_MONTHLY_ENERGY(departments, dailyUsages, daysInMonth) {
+ const results = [];
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const dailyUsage = dailyUsages[i][0];
+ const monthlyConsumption = dailyUsage * daysInMonth;
+ results.push([department, monthlyConsumption]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
