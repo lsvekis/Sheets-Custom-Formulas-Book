@@ -1,0 +1,22 @@
+// Calculate Monthly Water Consumption
+
+
+/**
+ * Calculates monthly water consumption for each department.
+ *
+ * @param {range} departments The range containing department names.
+ * @param {range} dailyConsumption The range containing daily water consumption in liters.
+ * @return {array|string} An array listing each department with its monthly water consumption, assuming a 30-day month, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_MONTHLY_WATER_CONSUMPTION(departments, dailyConsumption) {
+ const daysInMonth = 30; // Assuming 30 days in the month
+ const results = [];
+for (let i = 0; i < departments.length; i++) {
+ const department = departments[i][0];
+ const daily = dailyConsumption[i][0];
+ const monthlyConsumption = daily * daysInMonth;
+ results.push([department, monthlyConsumption + " liters"]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
