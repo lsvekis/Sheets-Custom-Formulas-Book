@@ -1,0 +1,20 @@
+// Track Task Completion Status
+/**
+ * Tracks the completion status of tasks.
+ *
+ * @param {range} tasks The range containing task names.
+ * @param {range} dueDates The range containing task due dates.
+ * @param {range} completionStatus The range containing boolean values indicating task completion.
+ * @return {array|string} An array listing tasks with their status as "Completed" or "Pending", or an error message if input data is invalid.
+ * @customfunction
+ */
+function TRACK_TASK_COMPLETION(tasks, dueDates, completionStatus) {
+ const results = [];
+for (let i = 0; i < tasks.length; i++) {
+ const task = tasks[i][0];
+ const isCompleted = completionStatus[i][0];
+ const status = isCompleted ? "Completed" : "Pending";
+ results.push([task, dueDates[i][0], status]);
+ }
+ return results.length > 0 ? results : "No tasks to display.";
+}
