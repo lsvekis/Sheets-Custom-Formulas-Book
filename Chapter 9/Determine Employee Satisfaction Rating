@@ -1,0 +1,27 @@
+// Determine Employee Satisfaction Rating
+
+
+/**
+ * Calculates the average satisfaction rating for employees.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} ratings The range containing satisfaction ratings.
+ * @return {number|string} The average satisfaction rating or an error message if input data is invalid.
+ * @customfunction
+ */
+function AVERAGE_SATISFACTION_RATING(employees, ratings) {
+ let totalRating = 0;
+ let count = 0;
+for (let i = 0; i < ratings.length; i++) {
+ const rating = ratings[i][0];
+ if (typeof rating === 'number') {
+ totalRating += rating;
+ count++;
+ }
+ }
+ if (count > 0) {
+ return (totalRating / count).toFixed(2);
+ } else {
+ return "Invalid or empty data!";
+ }
+}
