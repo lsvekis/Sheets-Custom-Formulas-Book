@@ -1,0 +1,21 @@
+// Calculate Total Discounts Given
+/**
+ * Calculates the total discounts given.
+ *
+ * @param {range} products The range containing product names.
+ * @param {range} originalPrices The range containing original prices.
+ * @param {range} discountedPrices The range containing discounted prices.
+ * @return {number|string} The total amount of discounts given or an error message if input data is invalid.
+ * @customfunction
+ */
+function TOTAL_DISCOUNTS_GIVEN(products, originalPrices, discountedPrices) {
+ let totalDiscount = 0;
+for (let i = 0; i < products.length; i++) {
+ const originalPrice = originalPrices[i][0];
+ const discountedPrice = discountedPrices[i][0];
+ if (typeof originalPrice === 'number' && typeof discountedPrice === 'number') {
+ totalDiscount += originalPrice - discountedPrice;
+ }
+ }
+ return totalDiscount > 0 ? totalDiscount : "No discounts given or invalid data.";
+}
