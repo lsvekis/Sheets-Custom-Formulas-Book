@@ -1,0 +1,21 @@
+// Evaluate Employee Overtime Hours
+/**
+ * Evaluates and lists employees with overtime hours exceeding a set threshold.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} overtimeHours The range containing overtime hours worked.
+ * @param {number} threshold The overtime hours threshold.
+ * @return {array|string} An array listing employees who have exceeded the overtime threshold, or an error message if no employees have exceeded the threshold.
+ * @customfunction
+ */
+function EVALUATE_OVERTIME(employees, overtimeHours, threshold) {
+ const results = [];
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const hours = overtimeHours[i][0];
+ if (hours > threshold) {
+ results.push([employee, hours]);
+ }
+ }
+ return results.length > 0 ? results : "No employees have exceeded the overtime threshold.";
+}
