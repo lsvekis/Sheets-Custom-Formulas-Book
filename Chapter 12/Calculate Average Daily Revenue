@@ -1,0 +1,20 @@
+// Calculate Average Daily Revenue
+/**
+ * Calculates average daily revenue for each store.
+ *
+ * @param {range} stores The range containing store names.
+ * @param {range} monthlyRevenue The range containing monthly revenue figures.
+ * @return {array|string} An array listing each store with its average daily revenue, assuming a 30-day month, or an error message if data is invalid.
+ * @customfunction
+ */
+function CALCULATE_AVERAGE_DAILY_REVENUE(stores, monthlyRevenue) {
+ const daysInMonth = 30; // Assuming 30 days in the month for simplicity
+ const results = [];
+for (let i = 0; i < stores.length; i++) {
+ const store = stores[i][0];
+ const revenue = monthlyRevenue[i][0];
+ const averageDailyRevenue = (revenue / daysInMonth).toFixed(2);
+ results.push([store, `$${averageDailyRevenue}`]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
