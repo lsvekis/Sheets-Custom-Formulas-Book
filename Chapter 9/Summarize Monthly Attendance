@@ -1,0 +1,22 @@
+// Summarize Monthly Attendance
+/**
+ * Summarizes monthly attendance for a team.
+ *
+ * @param {range} employees The range containing employee names.
+ * @param {range} dates The range containing dates.
+ * @param {range} statuses The range containing attendance statuses.
+ * @return {array|string} An array listing each employee and their total days present for the month, or an error message if input data is invalid.
+ * @customfunction
+ */
+function MONTHLY_ATTENDANCE_SUMMARY(employees, dates, statuses) {
+ const attendance = {};
+for (let i = 0; i < employees.length; i++) {
+ const employee = employees[i][0];
+ const status = statuses[i][0];
+ if (typeof employee === 'string' && status === 'Present') {
+ attendance[employee] = (attendance[employee] || 0) + 1;
+ }
+ }
+ const result = Object.entries(attendance).map(([employee, daysPresent]) => [employee, daysPresent]);
+ return result.length > 0 ? result : "No valid attendance data!";
+}
