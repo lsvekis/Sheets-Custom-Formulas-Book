@@ -1,0 +1,26 @@
+// Summarize Client Feedback Scores
+
+
+/**
+ * Summarizes client feedback scores by calculating the average score for each service.
+ *
+ * @param {range} services The range containing service names.
+ * @param {range} scores The range containing feedback scores from multiple clients.
+ * @return {array|string} An array summarizing the average feedback score for each service, or an error message if data is invalid.
+ * @customfunction
+ */
+function SUMMARIZE_CLIENT_FEEDBACK(services, scores) {
+ const results = [];
+for (let i = 0; i < services.length; i++) {
+ const service = services[i][0];
+ let totalScore = 0;
+ let count = 0;
+ for (let j = 0; j < scores[i].length; j++) {
+ totalScore += scores[i][j];
+ count++;
+ }
+ const averageScore = (totalScore / count).toFixed(2);
+ results.push([service, averageScore]);
+ }
+ return results.length > 0 ? results : "Invalid or empty data!";
+}
