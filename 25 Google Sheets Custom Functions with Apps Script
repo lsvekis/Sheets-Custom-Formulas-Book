@@ -1,0 +1,290 @@
+
+
+/**
+ * Function 1: Add Two Numbers
+ * Description: Adds two numbers together.
+ * @param {number} a - First number.
+ * @param {number} b - Second number.
+ * @return {number} Sum of a and b.
+ */
+function ADD_NUMBERS(a, b) {
+  return a + b;
+}
+// Usage: =ADD_NUMBERS(5, 10)
+
+/**
+ * Function 2: Generate Random UUID
+ * Description: Generates a random UUID (Universally Unique Identifier).
+ * @return {string} A random UUID.
+ */
+function GENERATE_UUID() {
+  return Utilities.getUuid();
+}
+// Usage: =GENERATE_UUID()
+
+/**
+ * Function 3: Convert Celsius to Fahrenheit
+ * Description: Converts Celsius to Fahrenheit.
+ * @param {number} celsius - Temperature in Celsius.
+ * @return {number} Temperature in Fahrenheit.
+ */
+function CELSIUS_TO_FAHRENHEIT(celsius) {
+  return (celsius * 9/5) + 32;
+}
+// Usage: =CELSIUS_TO_FAHRENHEIT(25)
+
+/**
+ * Function 4: Calculate Days Between Dates
+ * Description: Calculates the number of days between two dates.
+ * @param {Date} startDate - The start date.
+ * @param {Date} endDate - The end date.
+ * @return {number} The number of days between the dates.
+ */
+function DAYS_BETWEEN(startDate, endDate) {
+  return Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+}
+// Usage: =DAYS_BETWEEN(A1, B1)
+
+/**
+ * Function 5: Concatenate Strings with Space
+ * Description: Concatenates two strings with a space between them.
+ * @param {string} str1 - The first string.
+ * @param {string} str2 - The second string.
+ * @return {string} Concatenated result.
+ */
+function CONCATENATE_WITH_SPACE(str1, str2) {
+  return str1 + ' ' + str2;
+}
+// Usage: =CONCATENATE_WITH_SPACE("Hello", "World")
+
+/**
+ * Function 6: Convert String to Title Case
+ * Description: Converts a string to title case.
+ * @param {string} str - The string to convert.
+ * @return {string} The converted title-case string.
+ */
+function TO_TITLE_CASE(str) {
+  return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+}
+// Usage: =TO_TITLE_CASE("hello world")
+
+/**
+ * Function 7: Get Current Date and Time
+ * Description: Returns the current date and time.
+ * @return {Date} The current date and time.
+ */
+function CURRENT_DATETIME() {
+  return new Date();
+}
+// Usage: =CURRENT_DATETIME()
+
+/**
+ * Function 8: Calculate Compound Interest
+ * Description: Calculates compound interest.
+ * @param {number} principal - Principal amount.
+ * @param {number} rate - Rate of interest (in percentage).
+ * @param {number} time - Time period in years.
+ * @return {number} Compound interest.
+ */
+function COMPOUND_INTEREST(principal, rate, time) {
+  return principal * Math.pow((1 + rate / 100), time);
+}
+// Usage: =COMPOUND_INTEREST(1000, 5, 2)
+
+/**
+ * Function 9: Convert Kilometers to Miles
+ * Description: Converts kilometers to miles.
+ * @param {number} km - Distance in kilometers.
+ * @return {number} Distance in miles.
+ */
+function KM_TO_MILES(km) {
+  return km * 0.621371;
+}
+// Usage: =KM_TO_MILES(10)
+
+/**
+ * Function 10: Find Maximum Value
+ * Description: Finds the maximum value from a range of numbers.
+ * @param {...number} values - List of numbers.
+ * @return {number} Maximum value.
+ */
+function FIND_MAX(...values) {
+  return Math.max(...values);
+}
+// Usage: =FIND_MAX(1, 5, 10, 3)
+
+/**
+ * Function 11: Convert String to Lowercase
+ * Description: Converts a string to lowercase.
+ * @param {string} str - The string to convert.
+ * @return {string} Lowercased string.
+ */
+function TO_LOWERCASE(str) {
+  return str.toLowerCase();
+}
+// Usage: =TO_LOWERCASE("HELLO WORLD")
+
+/**
+ * Function 12: Count Words in a String
+ * Description: Counts the number of words in a string.
+ * @param {string} str - The string to count.
+ * @return {number} Number of words.
+ */
+function COUNT_WORDS(str) {
+  return str.trim().split(/\s+/).length;
+}
+// Usage: =COUNT_WORDS("Hello world, how are you?")
+
+/**
+ * Function 13: Generate Random Number Between Range
+ * Description: Generates a random number between min and max.
+ * @param {number} min - Minimum value.
+ * @param {number} max - Maximum value.
+ * @return {number} Random number.
+ */
+function RANDOM_BETWEEN(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+// Usage: =RANDOM_BETWEEN(1, 100)
+
+/**
+ * Function 14: Calculate Percentage
+ * Description: Calculates the percentage of a value.
+ * @param {number} value - The value.
+ * @param {number} total - The total.
+ * @return {number} Percentage value.
+ */
+function PERCENTAGE(value, total) {
+  return (value / total) * 100;
+}
+// Usage: =PERCENTAGE(50, 200)
+
+/**
+ * Function 15: Convert Minutes to Hours and Minutes
+ * Description: Converts minutes to hours and minutes.
+ * @param {number} minutes - Number of minutes.
+ * @return {string} Converted hours and minutes.
+ */
+function MINUTES_TO_HOURS(minutes) {
+  const hrs = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return `${hrs} hour(s) and ${mins} minute(s)`;
+}
+// Usage: =MINUTES_TO_HOURS(150)
+
+/**
+ * Function 16: Calculate Area of Circle
+ * Description: Calculates the area of a circle given the radius.
+ * @param {number} radius - Radius of the circle.
+ * @return {number} Area of the circle.
+ */
+function AREA_OF_CIRCLE(radius) {
+  return Math.PI * Math.pow(radius, 2);
+}
+// Usage: =AREA_OF_CIRCLE(5)
+
+/**
+ * Function 17: Reverse a String
+ * Description: Reverses the input string.
+ * @param {string} str - The string to reverse.
+ * @return {string} Reversed string.
+ */
+function REVERSE_STRING(str) {
+  return str.split('').reverse().join('');
+}
+// Usage: =REVERSE_STRING("Hello")
+
+/**
+ * Function 18: Calculate Simple Interest
+ * Description: Calculates simple interest.
+ * @param {number} principal - Principal amount.
+ * @param {number} rate - Rate of interest.
+ * @param {number} time - Time period.
+ * @return {number} Simple interest.
+ */
+function SIMPLE_INTEREST(principal, rate, time) {
+  return (principal * rate * time) / 100;
+}
+// Usage: =SIMPLE_INTEREST(1000, 5, 2)
+
+/**
+ * Function 19: Calculate Body Mass Index (BMI)
+ * Description: Calculates the BMI given weight and height.
+ * @param {number} weight - Weight in kilograms.
+ * @param {number} height - Height in meters.
+ * @return {number} BMI value.
+ */
+function BMI(weight, height) {
+  return weight / (height * height);
+}
+// Usage: =BMI(70, 1.75)
+
+/**
+ * Function 20: Convert Inches to Centimeters
+ * Description: Converts inches to centimeters.
+ * @param {number} inches - Length in inches.
+ * @return {number} Length in centimeters.
+ */
+function INCHES_TO_CM(inches) {
+  return inches * 2.54;
+}
+// Usage: =INCHES_TO_CM(10)
+
+/**
+ * Function 21: Convert Hours to Minutes
+ * Description: Converts hours to minutes.
+ * @param {number} hours - Number of hours.
+ * @return {number} Number of minutes.
+ */
+function HOURS_TO_MINUTES(hours) {
+  return hours * 60;
+}
+// Usage: =HOURS_TO_MINUTES(3)
+
+/**
+ * Function 22: Calculate Circle Circumference
+ * Description: Calculates the circumference of a circle given the radius.
+ * @param {number} radius - Radius of the circle.
+ * @return {number} Circumference of the circle.
+ */
+function CIRCUMFERENCE_OF_CIRCLE(radius) {
+  return 2 * Math.PI * radius;
+}
+// Usage: =CIRCUMFERENCE_OF_CIRCLE(5)
+
+/**
+ * Function 23: Find Minimum Value
+ * Description: Finds the minimum value from a range of numbers.
+ * @param {...number} values - List of numbers.
+ * @return {number} Minimum value.
+ */
+function FIND_MIN(...values) {
+  return Math.min(...values);
+}
+// Usage: =FIND_MIN(1, 5, 10, 3)
+
+/**
+ * Function 24: Calculate Average
+ * Description: Calculates the average of a list of numbers.
+ * @param {...number} values - List of numbers.
+ * @return {number} Average value.
+ */
+function AVERAGE(...values) {
+  return values.reduce((a, b) => a + b, 0) / values.length;
+}
+// Usage: =AVERAGE(10, 20, 30)
+
+/**
+ * Function 25: Capitalize First Letter
+ * Description: Capitalizes the first letter of each word in a string.
+ * @param {string} str - The string to capitalize.
+ * @return {string} The capitalized string.
+ */
+function CAPITALIZE_FIRST_LETTER(str) {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+// Usage: =CAPITALIZE_FIRST_LETTER("hello world")
+
+
+
+
